@@ -1,4 +1,4 @@
-package com.cybertek.tests;
+package com.cybertek.tests.day1_Navigation;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
