@@ -15,7 +15,7 @@ public class ClassNameExample {
 
         // class name does not work if the value of the class attribute has a space
 //        WebElement loginBtn = driver.findElement(By.className("btn btn-primary"));
-//        loginBtn.click();
+//        loginBtn.click(); ''
 
     }
 }
