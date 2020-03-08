@@ -33,7 +33,6 @@ public class login {
         driver.get("https://app.vytrack.com/user/login");
         driver.manage().window().maximize();
 
-
        driver.findElement(By.id("prependedInput")).sendKeys("storemanager52");
        driver.findElement(By.id("prependedInput2")).sendKeys("UserUser123");
 
