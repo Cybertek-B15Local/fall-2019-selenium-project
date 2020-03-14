@@ -10,7 +10,7 @@ import org.openqa.selenium.WebElement;
 public class AmazonTests {
     // main method to invoke the tests
     public static void main(String[] args) throws InterruptedException {
-        nameMatchTest();
+//        nameMatchTest();
         secondNameMatchTest();
 
 
@@ -42,14 +42,15 @@ public class AmazonTests {
         Thread.sleep(2000);
         // write xpath that captures second result
         // CHANGE XPATH
-        WebElement firstResult = driver.findElement(By.xpath(""));
+        WebElement secondResult = driver.findElement(By.xpath("(//span[@class='a-size-base-plus a-color-base a-text-normal'])[2]"));
         // it is prting the value
-        System.out.println(firstResult.getText());
+        System.out.println(secondResult.getText());
         // get the name of the second result
-        String expectedName = firstResult.getText();
+        String expectedName = secondResult.getText();
         // click on the second result
-        firstResult.click();
+        secondResult.click();
         // creating a new variable
+        Thread.sleep(2000);
         WebElement productName = driver.findElement(By.id("productTitle"));
         String actualName = productName.getText();
 
