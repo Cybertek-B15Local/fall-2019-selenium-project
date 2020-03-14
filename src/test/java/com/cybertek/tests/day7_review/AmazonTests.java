@@ -10,9 +10,8 @@ import org.openqa.selenium.WebElement;
 public class AmazonTests {
     // main method to invoke the tests
     public static void main(String[] args) throws InterruptedException {
-//        nameMatchTest();
+        nameMatchTest();
         secondNameMatchTest();
-
 
     }
 
