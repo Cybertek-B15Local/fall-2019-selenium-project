@@ -12,9 +12,30 @@ public class AmazonCssExample {
         WebElement todaysDeals = driver.findElement(By.cssSelector("a[tabindex='47']"));
         todaysDeals.click();
 
-        String expexted = "Today's Deals";
+        String expected = "Today's Deals";
         WebElement topHeader = driver.findElement(By.cssSelector(".nav-a-content"));
         System.out.println(topHeader.getText());
+
+        if (expected.equals(topHeader.getText())) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+            System.out.println("expected = " + expected);
+            System.out.println("actual " + topHeader.getText());
+        }
+
+        WebElement bottomHeader = driver.findElement(By.cssSelector("h1>div:nth-of-type(1)"));
+        System.out.println(bottomHeader.getText());
+
+        if (expected.equals(bottomHeader.getText())) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+            System.out.println("expected = " + expected);
+            System.out.println("actual = " + bottomHeader.getText());
+        }
+
+        driver.close();
 
     }
 }
