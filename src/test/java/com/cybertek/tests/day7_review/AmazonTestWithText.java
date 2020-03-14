@@ -24,6 +24,6 @@ public class AmazonTestWithText {
         WebElement result = driver.findElement(By.xpath("//span[.='Selenium Testing Tools Cookbook - Second Edition']"));
         System.out.println(result.getText());
 
-
+        driver.close();
     }
 }
