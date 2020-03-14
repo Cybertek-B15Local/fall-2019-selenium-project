@@ -6,6 +6,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
+// TODO THIS CLASS WILL FAIL
 public class AmazonTests {
     // main method to invoke the tests
     public static void main(String[] args) throws InterruptedException {
