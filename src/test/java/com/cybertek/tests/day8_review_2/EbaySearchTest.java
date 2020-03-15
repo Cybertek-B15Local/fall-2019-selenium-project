@@ -44,5 +44,26 @@ public class EbaySearchTest {
         int countTwo = Integer.parseInt(count.replace(",", ""));
         System.out.println(countTwo);
 
+        if (countOne < countTwo) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+            System.out.println("countOne = " + countOne);
+            System.out.println("countTwo = " + countTwo);
+        }
+
+        driver.navigate().back();
+
+        input = driver.findElement(By.id("gh-ac"));
+        String woodenSpoon = input.getAttribute("value");
+        System.out.println(woodenSpoon);
+
+        if (woodenSpoon.equals("wooden spoon")) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+            System.out.println("Expected: " + "woodenSpoon");
+            System.out.println("Actual: " + woodenSpoon);
+        }
     }
 }
