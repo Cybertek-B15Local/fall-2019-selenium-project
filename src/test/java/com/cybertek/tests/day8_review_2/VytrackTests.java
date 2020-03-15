@@ -44,8 +44,15 @@ permission to perform this action.
 
         verifyStartsWith(expectedTitle, actualTitle);
 
+        WebElement shortcutIcon = driver.findElement(By.cssSelector("a[title='Shortcuts']"));
+        shortcutIcon.click();
 
+        WebElement allLinks = driver.findElement(By.linkText("See full list"));
+        allLinks.click();
 
+        Thread.sleep(2000);
+        WebElement opportunities = driver.findElement(By.linkText("Opportunities"));
+        opportunities.click();
     }
 
     private static void verifyStartsWith(String expectedTitle, String actualTitle) {
