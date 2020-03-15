@@ -69,6 +69,9 @@ permission to perform this action.
 
         verifyStartsWith("You do not have permission to perform this action.", errorMessage.getText());
 
+        verifyStartsWith("Shortcut Actions List", driver.getTitle());
+        driver.quit();
+
     }
 
     private static void verifyStartsWith(String expectedTitle, String actualTitle) {
