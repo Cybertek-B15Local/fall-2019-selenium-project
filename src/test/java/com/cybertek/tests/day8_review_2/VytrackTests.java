@@ -53,6 +53,10 @@ permission to perform this action.
         Thread.sleep(2000);
         WebElement opportunities = driver.findElement(By.linkText("Opportunities"));
         opportunities.click();
+
+        Thread.sleep(2000);
+        verifyStartsWith("Open Opportunities", driver.getTitle());
+
     }
 
     private static void verifyStartsWith(String expectedTitle, String actualTitle) {
