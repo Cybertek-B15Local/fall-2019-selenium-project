@@ -38,6 +38,17 @@ right
         WebElement myConfiguration = driver.findElement(By.cssSelector("ul.dropdown-menu>li>a[href='/config/user/profile']"));
         myConfiguration.click();
 
+        Thread.sleep(2000);
+        String expected = profileName.getText();
+        String actual = driver.getTitle();
+
+        if (actual.startsWith(expected)) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+            System.out.println("expected = " + expected);
+            System.out.println("actual = " + actual);
+        }
 
     }
 }
