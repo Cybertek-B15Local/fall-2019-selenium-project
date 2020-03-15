@@ -57,6 +57,18 @@ permission to perform this action.
         Thread.sleep(2000);
         verifyStartsWith("Open Opportunities", driver.getTitle());
 
+        shortcutIcon.click();
+        allLinks.click();
+
+        Thread.sleep(2000);
+        WebElement vehicleServiceLogs = driver.findElement(By.linkText("Vehicle Services Logs"));
+        vehicleServiceLogs.click();
+
+        Thread.sleep(1000);
+        WebElement errorMessage = driver.findElement(By.cssSelector(".message"));
+
+        verifyStartsWith("You do not have permission to perform this action.", errorMessage.getText());
+
     }
 
     private static void verifyStartsWith(String expectedTitle, String actualTitle) {
