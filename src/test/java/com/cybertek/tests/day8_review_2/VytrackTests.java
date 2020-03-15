@@ -34,5 +34,10 @@ right
         Thread.sleep(2000);
         profileName.click();
 
+        Thread.sleep(1000);
+        WebElement myConfiguration = driver.findElement(By.cssSelector("ul.dropdown-menu>li>a[href='/config/user/profile']"));
+        myConfiguration.click();
+
+
     }
 }
