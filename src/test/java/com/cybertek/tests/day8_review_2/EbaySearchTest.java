@@ -65,5 +65,22 @@ public class EbaySearchTest {
             System.out.println("Expected: " + "woodenSpoon");
             System.out.println("Actual: " + woodenSpoon);
         }
+        driver.navigate().back();
+
+        Thread.sleep(2000);
+        input = driver.findElement(By.id("gh-ac"));
+        woodenSpoon = input.getAttribute("value");
+        System.out.println("woodenSpoon = " + woodenSpoon);
+
+        if (woodenSpoon.isEmpty()) {
+            System.out.println("PASS");
+        } else {
+            System.out.println("FAIL");
+            System.out.println("Expected a blank value");
+            System.out.println("Actual: " + woodenSpoon);
+        }
+
+        driver.quit();
     }
+
 }
