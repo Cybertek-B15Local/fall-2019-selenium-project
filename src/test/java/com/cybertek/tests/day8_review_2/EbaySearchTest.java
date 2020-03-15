@@ -23,18 +23,26 @@ public class EbaySearchTest {
         WebDriver driver = WebDriverFactory.getDriver("chrome");
         driver.get("https://ebay.com");
         WebElement input = driver.findElement(By.id("gh-ac"));
-        input.sendKeys("wooden spoon"+ Keys.ENTER);
+        input.sendKeys("wooden spoon" + Keys.ENTER);
         Thread.sleep(2000);
         WebElement countEl = driver.findElement(By.cssSelector("h1>span"));
         String count = countEl.getText();
         System.out.println(count);
 
-        int countN = Integer.parseInt(count.replace(",",""));
-        System.out.println(countN);
+        int countOne = Integer.parseInt(count.replace(",", ""));
+        System.out.println(countOne);
 
         WebElement all = driver.findElement(By.linkText("All"));
         all.click();
+        Thread.sleep(2000);
 
+        // re initialize the element that is throwing the stateelementexception
+        countEl = driver.findElement(By.cssSelector("h1>span"));
+        count = countEl.getText();
+        System.out.println(count);
+
+        int countTwo = Integer.parseInt(count.replace(",", ""));
+        System.out.println(countTwo);
 
     }
 }
