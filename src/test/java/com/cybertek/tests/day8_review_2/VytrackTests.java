@@ -29,7 +29,7 @@ permission to perform this action.
 13. Verify Shortcut Actions List page is still open
 
  */
-    private static void shortcutTest() {
+    private static void shortcutTest() throws InterruptedException {
         WebDriver driver = WebDriverFactory.getDriver("chrome");
         driver.get("http://qa3.vytrack.com");
         WebElement username = driver.findElement(By.id("prependedInput"));
@@ -38,6 +38,24 @@ permission to perform this action.
         password.sendKeys("UserUser123");
         password.submit();
 
+        Thread.sleep(2000);
+        String expectedTitle = "Dashboard";
+        String actualTitle = driver.getTitle();
+
+        verifyStartsWith(expectedTitle, actualTitle);
+
+
+
+    }
+
+    private static void verifyStartsWith(String expectedTitle, String actualTitle) {
+        if (actualTitle.startsWith(expectedTitle)) {
+            System.out.println("PASS");
+        }else {
+            System.out.println("FAIL");
+            System.out.println("expectedTitle = " + expectedTitle);
+            System.out.println("actualTitle = " + actualTitle);
+        }
     }
 
     /*
@@ -80,4 +98,11 @@ right
         }
         driver.quit();
     }
+
+
+    /*
+    write a method that takes 2 strings, verifies if string 1 starts with string 2
+
+     */
+
 }
