@@ -8,7 +8,36 @@ import org.openqa.selenium.WebElement;
 public class VytrackTests {
 
     public static void main(String[] args) throws InterruptedException {
-        titleTest();
+//        titleTest();
+        shortcutTest();
+
+    }
+/*
+Open browser
+2. Go to Vytrack login page
+3. Login as a sales manager
+4. Verify Dashboard page is open
+5. Click on Shortcuts icon
+6. Click on link See full list
+7. Click on link Opportunities
+8. Verify Open opportunities page is open
+9. Click on Shortcuts icon
+10. Click on link See full list
+11. Click on link Vehicle Service Logs
+12. Verify error message text is You do not have
+permission to perform this action.
+13. Verify Shortcut Actions List page is still open
+
+ */
+    private static void shortcutTest() {
+        WebDriver driver = WebDriverFactory.getDriver("chrome");
+        driver.get("http://qa3.vytrack.com");
+        WebElement username = driver.findElement(By.id("prependedInput"));
+        username.sendKeys("salesmanager110");
+        WebElement password = driver.findElement(By.id("prependedInput2"));
+        password.sendKeys("UserUser123");
+        password.submit();
+
     }
 
     /*
@@ -49,6 +78,6 @@ right
             System.out.println("expected = " + expected);
             System.out.println("actual = " + actual);
         }
-
+        driver.quit();
     }
 }
