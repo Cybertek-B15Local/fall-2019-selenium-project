@@ -27,11 +27,13 @@ List<String> searchStrs = Arrays.asList("Java", "cucumber bdd", “Selenium web 
         WebDriver driver = WebDriverFactory.getDriver("chrome");
         driver.get("https://google.com");
 
-//        List<String> searchStrs = Arrays.asList("Java", "cucumber bdd", "Selenium web browser automation" );
-        List<String> searchStrs = Arrays.asList("Java");
+        List<String> searchStrs = Arrays.asList("Java", "cucumber bdd", "Selenium web browser automation" );
+//        List<String> searchStrs = Arrays.asList("Java");
 
         for (String searchStr : searchStrs) {
             WebElement searchInput = driver.findElement(By.name("q"));
+            // this is for setting up the 2 and 3 rd loop
+            searchInput.clear();
             searchInput.sendKeys(searchStr + Keys.ENTER);
 
             WebElement url = driver.findElement(By.cssSelector(".iUh30.tjvcx"));
@@ -49,6 +51,7 @@ List<String> searchStrs = Arrays.asList("Java", "cucumber bdd", “Selenium web 
                 System.out.println("Actual = " + driver.getCurrentUrl());
             }
 
+            driver.navigate().back();
 
         }
 
