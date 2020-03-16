@@ -40,7 +40,7 @@ List<String> searchStrs = Arrays.asList("Java", "cucumber bdd", “Selenium web 
             String expectedUrl = url.getText();
             System.out.println(expectedUrl);
 
-            WebElement link = driver.findElement(By.tagName("h3"));
+            WebElement link = driver.findElement(By.cssSelector("div.r>a>h3"));
             link.click();
 
             if (expectedUrl.equals(driver.getCurrentUrl())) {
