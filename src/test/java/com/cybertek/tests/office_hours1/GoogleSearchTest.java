@@ -32,18 +32,28 @@ List<String> searchStrs = Arrays.asList("Java", "cucumber bdd", “Selenium web 
 
         for (String searchStr : searchStrs) {
             WebElement searchInput = driver.findElement(By.name("q"));
-            searchInput.sendKeys(searchStr+ Keys.ENTER);
+            searchInput.sendKeys(searchStr + Keys.ENTER);
+
             WebElement url = driver.findElement(By.cssSelector(".iUh30.tjvcx"));
-            System.out.println(url.getText());
+            String expectedUrl = url.getText();
+            System.out.println(expectedUrl);
+
+            WebElement link = driver.findElement(By.tagName("h3"));
+            link.click();
+
+            if (expectedUrl.equals(driver.getCurrentUrl())) {
+                System.out.println("PASS");
+            } else {
+                System.out.println("FAIL");
+                System.out.println("Expected = " + expectedUrl);
+                System.out.println("Actual = " + driver.getCurrentUrl());
+            }
+
 
         }
 
 
-
     }
-
-
-
 
 
 }
