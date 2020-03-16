@@ -54,7 +54,7 @@ List<String> searchStrs = Arrays.asList("Java", "cucumber bdd", “Selenium web 
             driver.navigate().back();
 
         }
-
+        driver.quit();
 
     }
 
