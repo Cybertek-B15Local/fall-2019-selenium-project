@@ -10,7 +10,7 @@ public class FirstTestNGTest {
         System.out.println("test one");
     }
 
-//    @Ignore
+    @Ignore
     @Test
     public void test2(){
         System.out.println("test two");
