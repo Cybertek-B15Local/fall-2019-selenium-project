@@ -29,4 +29,13 @@ public class TestNGAssertionsTest {
 
         System.out.println("test 2 complete");
     }
+
+    @Test
+    public void test3(){
+        String expected = "one";
+        String actual = "two";
+        Assert.assertNotEquals(expected, actual);
+        Assert.assertNotEquals(1, 2);
+
+    }
 }
