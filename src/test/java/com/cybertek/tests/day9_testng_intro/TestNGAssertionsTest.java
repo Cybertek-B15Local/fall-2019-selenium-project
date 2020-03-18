@@ -38,4 +38,13 @@ public class TestNGAssertionsTest {
         Assert.assertNotEquals(1, 2);
 
     }
+
+    @Test
+    public void test4(){
+        String expected = "one";
+        String actual = "two";
+
+//        Assert.assertTrue();
+    }
+
 }
