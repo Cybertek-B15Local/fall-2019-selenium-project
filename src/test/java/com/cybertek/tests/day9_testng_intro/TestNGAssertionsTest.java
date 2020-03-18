@@ -42,9 +42,30 @@ public class TestNGAssertionsTest {
     @Test
     public void test4(){
         String expected = "one";
-        String actual = "two";
+        String actual = "one";
 
-//        Assert.assertTrue();
+        Assert.assertTrue(expected.equals(actual));
+
+        int e =100;
+        int a = 200;
+        Assert.assertTrue(a>e);
+    }
+
+
+    @Test
+    public void test5(){
+        // verify that url is EQUAL to https://www.google.com/
+
+        String expected = "https://www.google.com/";
+        String actual = "https://www.google.com/";
+        Assert.assertEquals(expected, actual);
+
+        // verify that title starts with java
+        String expected1 = "java";
+        String actual1 = "java - Google Search";
+
+        Assert.assertTrue(actual1.startsWith(expected1));
+
     }
 
 }
