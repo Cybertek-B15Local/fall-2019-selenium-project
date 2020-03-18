@@ -68,4 +68,13 @@ public class TestNGAssertionsTest {
 
     }
 
+
+    @Test
+    public void fromHamid (){
+        int a =100;
+        int b = 200;
+        Assert.assertTrue(b>a); // this line is true but
+        Assert.assertTrue(a>b); /// false
+    }
+
 }
