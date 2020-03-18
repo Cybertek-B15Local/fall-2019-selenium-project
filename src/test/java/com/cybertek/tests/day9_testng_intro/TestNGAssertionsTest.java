@@ -11,6 +11,10 @@ public class TestNGAssertionsTest {
         String actual = "one";
 
         Assert.assertEquals(actual, expected);
+        Assert.assertEquals(1, 1);
+        Assert.assertEquals(true, true);
+
+        System.out.println("test 1 complete");
 
     }
 
@@ -19,7 +23,10 @@ public class TestNGAssertionsTest {
         String expected = "one";
         String actual = "two";
 
+        System.out.println("starting to compare");
+
         Assert.assertEquals(actual, expected);
 
+        System.out.println("test 2 complete");
     }
 }
