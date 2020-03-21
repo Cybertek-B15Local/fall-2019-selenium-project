@@ -35,5 +35,17 @@ public class CheckboxesTest {
 
         Assert.assertFalse(one.isSelected());
         Assert.assertTrue(two.isSelected());
+
+        // check the first checkbox
+        // verify one is selected
+        // verify two is selected
+        System.out.println("check the first checkbox");
+        one.click();
+        System.out.println("is one selected: "+ one.isSelected());
+        System.out.println("is two selected: "+ two.isSelected());
+
+        Assert.assertTrue(one.isSelected());
+        Assert.assertTrue(two.isSelected());
+
     }
 }
