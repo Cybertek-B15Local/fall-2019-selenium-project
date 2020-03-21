@@ -4,6 +4,7 @@ import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -35,9 +36,13 @@ public class ListOfElementsTests {
         //   driver.findElements --> returns a LIST of element
         // if the locator does not match anhytihg, it does not throw exception, it just returns empty list
 
-        List<WebElement> sports = driver.findElements(By.name("sdgsdgf"));
+        List<WebElement> sports = driver.findElements(By.name("sport"));
 
         System.out.println(sports.size());
+
+        for (WebElement radioButton : sports) {
+            Assert.assertFalse(radioButton.isSelected());
+        }
     }
 
 
