@@ -11,6 +11,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.util.List;
+import java.util.Random;
 
 public class ListOfElementsTests {
     WebDriver driver;
@@ -53,7 +54,7 @@ public class ListOfElementsTests {
     print their text
      */
     @Test
-    public void getAllLinksTest(){
+    public void getAllLinksTest() {
         driver.get("http://practice.cybertekschool.com");
 
         // get all the links in a page
@@ -79,19 +80,58 @@ public class ListOfElementsTests {
     @Test
     public void amazonTest() throws InterruptedException {
         driver.get("https://amazon.com");
-        WebElement input  = driver.findElement(By.id("twotabsearchtextbox"));
-        input.sendKeys("paper towels"+ Keys.ENTER);
+        WebElement input = driver.findElement(By.id("twotabsearchtextbox"));
+        input.sendKeys("paper towels" + Keys.ENTER);
 
         List<WebElement> allResults = driver.findElements(By.cssSelector("span.a-size-base-plus"));
 
         Thread.sleep(2000);
-        System.out.println("Number of results: "+ allResults.size());
+        System.out.println("Number of results: " + allResults.size());
 
-        System.out.println("First result: "+allResults.get(0).getText());
-        System.out.println("Second result: "+allResults.get(1).getText());
-        System.out.println("Last result: "+ allResults.get(allResults.size()-1).getText());
+        System.out.println("First result: " + allResults.get(0).getText());
+        System.out.println("Second result: " + allResults.get(1).getText());
+        System.out.println("Last result: " + allResults.get(allResults.size() - 1).getText());
 
 
+    }
+
+    /*
+    go to http://practice.cybertekschool.com/radio_buttons
+    verify the all sports checkboxes are NOT checked by default
+    randomly click any sport
+    verify that that sport is clicked
+    verify that all others are not clicked
+    repeat the last step for 5 times
+     */
+
+    @Test
+    public void radioTest() throws InterruptedException {
+        driver.get("http://practice.cybertekschool.com/radio_buttons");
+        List<WebElement> list = driver.findElements(By.name("sport"));
+        System.out.println(list.size());
+        //checking all the sport checkboxes are not checked
+        for (int i = 0; i < list.size(); i++) {
+            Assert.assertFalse(list.get(i).isSelected());
+        }
+
+        Thread.sleep(2000);
+
+        //randomly clicking and verifying
+        Random ran = new Random();
+        for (int q = 0; q < 5; q++) {
+            Thread.sleep(2000);
+            int num = ran.nextInt(4);
+            list.get(num).click();
+            System.out.println("Selecting button number: " + (num +1));
+            for (int i = 0; i < list.size(); i++) {
+                if (i == num) {
+                    Assert.assertTrue(list.get(num).isSelected());
+                } else {
+                    Assert.assertFalse(list.get(i).isSelected());
+                }
+            }
+
+        }
     }
 
 
