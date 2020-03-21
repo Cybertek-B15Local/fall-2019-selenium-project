@@ -34,6 +34,7 @@ public class ListOfElementsTests {
         driver.get("http://practice.cybertekschool.com/radio_buttons");
 
         //   driver.findElements --> returns a LIST of element
+        // returns all the elements that match the given locator
         // if the locator does not match anhytihg, it does not throw exception, it just returns empty list
 
         List<WebElement> sports = driver.findElements(By.name("sport"));
@@ -44,6 +45,21 @@ public class ListOfElementsTests {
             Assert.assertFalse(radioButton.isSelected());
         }
     }
+
+    /*
+    go to practice website
+    get all the links present in the page
+    print their text
+     */
+    @Test
+    public void getAllLinksTest(){
+        driver.get("http://practice.cybertekschool.com");
+
+        // get all the links in a page
+        List<WebElement> links = driver.findElements(By.tagName("a"));
+        System.out.println(links.size());
+    }
+
 
 
 }
