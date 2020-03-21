@@ -43,4 +43,25 @@ public class DisabledAndDisplayedTests {
         Assert.assertTrue(black.isEnabled());
 
     }
+
+
+    @Test
+    public void disabledTestWithAttribute() throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement green = driver.findElement(By.id("green"));
+        WebElement black = driver.findElement(By.id("black"));
+
+
+        System.out.println("black: "+ black.getAttribute("disabled"));
+        System.out.println("green: "+ green.getAttribute("disabled"));
+
+        // verify that certain value is equal to null. verify element is enabled
+        Assert.assertEquals(black.getAttribute("disabled"), null);
+        // VERIFY THAT VALUE OF black.getAttribute("disabled") IS NULL
+        Assert.assertNull(black.getAttribute("disabled"));
+
+        // verify that certain value is equal to TRUE. verify element is DISALBED
+        Assert.assertEquals(green.getAttribute("disabled"), "true");
+        Assert.assertTrue(Boolean.parseBoolean(green.getAttribute("disabled")));
+    }
 }
