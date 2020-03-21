@@ -77,14 +77,20 @@ public class ListOfElementsTests {
      */
 
     @Test
-    public void amazonTest(){
+    public void amazonTest() throws InterruptedException {
         driver.get("https://amazon.com");
         WebElement input  = driver.findElement(By.id("twotabsearchtextbox"));
         input.sendKeys("paper towels"+ Keys.ENTER);
 
         List<WebElement> allResults = driver.findElements(By.cssSelector("span.a-size-base-plus"));
 
+        Thread.sleep(2000);
         System.out.println("Number of results: "+ allResults.size());
+
+        System.out.println("First result: "+allResults.get(0).getText());
+        System.out.println("Second result: "+allResults.get(1).getText());
+        System.out.println("Last result: "+ allResults.get(allResults.size()-1).getText());
+
 
     }
 
