@@ -61,7 +61,7 @@ public class RadioButtonsTest {
     public void test2() {
         WebElement red = driver.findElement(By.id("red"));
         WebElement blue = driver.findElement(By.id("blue"));
-
+        red.click();
 
     }
 
