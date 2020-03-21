@@ -2,6 +2,7 @@ package com.cybertek.tests.day10_webelement;
 
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
@@ -65,6 +66,27 @@ public class ListOfElementsTests {
         }
     }
 
+
+    /*
+    go to amazon
+    search for paper towels
+    print the number of results
+    print the first result
+    print the second result
+    print the last result
+     */
+
+    @Test
+    public void amazonTest(){
+        driver.get("https://amazon.com");
+        WebElement input  = driver.findElement(By.id("twotabsearchtextbox"));
+        input.sendKeys("paper towels"+ Keys.ENTER);
+
+        List<WebElement> allResults = driver.findElements(By.cssSelector("span.a-size-base-plus"));
+
+        System.out.println("Number of results: "+ allResults.size());
+
+    }
 
 
 }
