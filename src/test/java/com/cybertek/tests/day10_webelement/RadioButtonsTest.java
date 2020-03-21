@@ -54,7 +54,7 @@ public class RadioButtonsTest {
     go to http://practice.cybertekschool.com/
     click on red
     verify that blue is not selected
-    red is  selected
+    red is selected
      */
 
     @Test
@@ -62,6 +62,8 @@ public class RadioButtonsTest {
         WebElement red = driver.findElement(By.id("red"));
         WebElement blue = driver.findElement(By.id("blue"));
         red.click();
+        Assert.assertFalse(blue.isSelected());
+        Assert.assertTrue(red.isSelected());
 
     }
 
