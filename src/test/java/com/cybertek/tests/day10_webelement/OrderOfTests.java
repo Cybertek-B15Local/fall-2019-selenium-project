@@ -12,14 +12,15 @@ public class OrderOfTests {
         System.out.println("opening the browser");
         System.out.println("capturing title");
         title = "cbt";
+        // i will make this test fail.  Assert.fail() --> is a ready method that makes test fail
+        Assert.fail();
     }
 
-    @Test(priority = 1)
+    @Test(priority = 1, dependsOnMethods = "login")
     public void assertTitle() {
         System.out.println("verifying the title");
         Assert.assertEquals(title, "cbt");
     }
-
 
     @Test(priority = 55)
     public void verifyOtherThings() {
