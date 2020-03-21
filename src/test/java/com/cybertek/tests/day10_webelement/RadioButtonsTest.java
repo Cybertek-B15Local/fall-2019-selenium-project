@@ -29,7 +29,7 @@ public class RadioButtonsTest {
     /*
     go to http://practice.cybertekschool.com/radio_buttons
     verify that blue is selected
-    red is not selected
+    verify red is not selected
      */
 
     @Test
@@ -40,6 +40,13 @@ public class RadioButtonsTest {
 
         // verify is the radio button is selected
         Assert.assertTrue(blue.isSelected());
+
+        WebElement red = driver.findElement(By.id("red"));
+        // print red is not selected
+        System.out.println(red.isSelected());
+
+        // verifies if the statement it false. if it is false, it passes. if true it fails.
+        Assert.assertFalse(red.isSelected());
 
     }
 
