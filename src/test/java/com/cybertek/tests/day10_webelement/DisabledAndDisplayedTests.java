@@ -79,7 +79,7 @@ public class DisabledAndDisplayedTests {
         System.out.println("click on start");
         start.click();
 
-        Thread.sleep(5000);
+        Thread.sleep(7000);
         System.out.println("Username is visible: " + username.isDisplayed());
         Assert.assertTrue(username.isDisplayed());
 
