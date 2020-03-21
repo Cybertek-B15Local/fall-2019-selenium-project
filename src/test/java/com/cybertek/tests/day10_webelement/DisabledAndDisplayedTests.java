@@ -64,4 +64,24 @@ public class DisabledAndDisplayedTests {
         Assert.assertEquals(green.getAttribute("disabled"), "true");
         Assert.assertTrue(Boolean.parseBoolean(green.getAttribute("disabled")));
     }
+
+    @Test
+    public void testElementVisible() throws InterruptedException {
+        driver.get("http://practice.cybertekschool.com/dynamic_loading/1");
+        WebElement username = driver.findElement(By.id("username"));
+        WebElement start = driver.findElement(By.tagName("button"));
+
+        // verify that username is not visible
+        /// isDisplayed --> returns true element we found in HTML is visible on page
+        System.out.println("Username is visible: " + username.isDisplayed());
+        Assert.assertFalse(username.isDisplayed());
+
+        System.out.println("click on start");
+        start.click();
+
+        Thread.sleep(5000);
+        System.out.println("Username is visible: " + username.isDisplayed());
+        Assert.assertTrue(username.isDisplayed());
+
+    }
 }
