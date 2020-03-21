@@ -102,27 +102,34 @@ public class ListOfElementsTests {
     verify that that sport is clicked
     verify that all others are not clicked
     repeat the last step for 5 times
+
+    Amirjon special
      */
 
     @Test
     public void radioTest() throws InterruptedException {
         driver.get("http://practice.cybertekschool.com/radio_buttons");
         List<WebElement> list = driver.findElements(By.name("sport"));
+
+        System.out.println("verify none of them selected by default");
         System.out.println(list.size());
         //checking all the sport checkboxes are not checked
         for (int i = 0; i < list.size(); i++) {
             Assert.assertFalse(list.get(i).isSelected());
         }
 
-        Thread.sleep(2000);
+        System.out.println("Start randomly selecting radio buttons");
 
         //randomly clicking and verifying
-        Random ran = new Random();
+
         for (int q = 0; q < 5; q++) {
-            Thread.sleep(2000);
+
+            Thread.sleep(5000);
+            Random ran = new Random();
             int num = ran.nextInt(4);
             list.get(num).click();
-            System.out.println("Selecting button number: " + (num +1));
+            System.out.println("Selecting button number: " + (num + 1));
+
             for (int i = 0; i < list.size(); i++) {
                 if (i == num) {
                     Assert.assertTrue(list.get(num).isSelected());
