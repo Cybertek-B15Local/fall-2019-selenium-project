@@ -15,25 +15,25 @@ public class RadioButtonsTest {
     WebDriver driver;
 
     @BeforeMethod
-    public void beforeMethod(){
+    public void beforeMethod() {
         driver = WebDriverFactory.getDriver("chrome");
         driver.get("http://practice.cybertekschool.com/radio_buttons");
 
     }
 
     @AfterMethod
-    public void afterTest(){
+    public void afterTest() {
         driver.quit();
     }
 
-    /*
+    /* default behavior test
     go to http://practice.cybertekschool.com/radio_buttons
     verify that blue is selected
     verify red is not selected
      */
 
     @Test
-    public void test1(){
+    public void test1() {
         WebElement blue = driver.findElement(By.id("blue"));
         // isSelected --> returns true if element is selected
         System.out.println(blue.isSelected());
@@ -56,5 +56,13 @@ public class RadioButtonsTest {
     verify that blue is not selected
     red is  selected
      */
+
+    @Test
+    public void test2() {
+        WebElement red = driver.findElement(By.id("red"));
+        WebElement blue = driver.findElement(By.id("blue"));
+
+
+    }
 
 }
