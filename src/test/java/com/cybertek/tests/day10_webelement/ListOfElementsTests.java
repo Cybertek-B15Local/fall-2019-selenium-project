@@ -58,6 +58,11 @@ public class ListOfElementsTests {
         // get all the links in a page
         List<WebElement> links = driver.findElements(By.tagName("a"));
         System.out.println(links.size());
+        // get the text of each link and print
+
+        for (WebElement link : links) {
+            System.out.println(link.getText());
+        }
     }
 
 
