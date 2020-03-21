@@ -4,6 +4,7 @@ import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -36,6 +37,10 @@ public class DisabledAndDisplayedTests {
         WebElement green = driver.findElement(By.id("green"));
         WebElement black = driver.findElement(By.id("black"));
         // isEnabled --> returns true if the element is enabled, active
-        System.out.println(green.isEnabled());
+        System.out.println("Is green enabled: "+green.isEnabled());
+        System.out.println("Is black enabled: "+black.isEnabled());
+        Assert.assertFalse(green.isEnabled());
+        Assert.assertTrue(black.isEnabled());
+
     }
 }
