@@ -10,6 +10,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 public class SelectClassTests {
     WebDriver driver;
 
@@ -81,6 +83,16 @@ public class SelectClassTests {
 
         // print the current selection
         System.out.println(monthList.getFirstSelectedOption().getText());
+
+        // TODO getOptions--> returns all of the availabe options from dropdown
+        List<WebElement> allOptions = monthList.getOptions();
+
+        System.out.println("Number of months: "+ allOptions.size());
+
+        for (WebElement month : allOptions) {
+            System.out.println(month.getText());
+        }
+
 
     }
 
