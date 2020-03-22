@@ -123,4 +123,14 @@ public class SelectClassTests {
 
 
     @Test
+    public void verifyOptions(){
+        Select list = new Select(driver.findElement(By.id("dropdown")));
+        // verify that list has 3 options
+        int expectedSize = 3;
+        int actualSize = list.getOptions().size();
+
+        List<String> expectedValues = Arrays.asList("Please select an option", "Option 1", "Option 2");
+
+
+    }
 }
