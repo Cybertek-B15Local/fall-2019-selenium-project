@@ -63,7 +63,15 @@ public class SelectClassTests {
         states.selectByIndex(20);
         Thread.sleep(1000);
 
-
+        // TODO selectByValue--> selects based on the value of the value attribute of the option
+        // TODO selectByValue --> it is not select text
+        states.selectByValue("VA");
+        Thread.sleep(1000);
+        states.selectByValue("SC");
+        Thread.sleep(1000);
+        states.selectByValue("CO");
+        Thread.sleep(1000);
+        states.selectByValue("NE");
 
     }
 }
