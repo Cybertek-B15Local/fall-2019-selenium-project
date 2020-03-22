@@ -39,4 +39,22 @@ public class SelectClassTests {
         // verify selected option
         Assert.assertEquals(selectedOption.getText(), "Please select an option");
     }
+
+    @Test
+    public void selectFromList() throws InterruptedException {
+        // get the element with select tag
+        WebElement dropdown = driver.findElement(By.id("state"));
+        // create select class
+        Select states = new Select(dropdown);
+
+        // selectByVisibleText --> selects by the text of the option
+        states.selectByVisibleText("Iowa");
+        Thread.sleep(1000);
+        states.selectByVisibleText("Vermont");
+        Thread.sleep(1000);
+        states.selectByVisibleText("Kentucky");
+        Thread.sleep(1000);
+
+
+    }
 }
