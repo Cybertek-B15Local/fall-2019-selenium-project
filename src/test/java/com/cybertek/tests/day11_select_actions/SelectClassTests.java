@@ -47,13 +47,22 @@ public class SelectClassTests {
         // create select class
         Select states = new Select(dropdown);
 
-        // selectByVisibleText --> selects by the text of the option
+        // TODO selectByVisibleText --> selects by the text of the option
         states.selectByVisibleText("Iowa");
         Thread.sleep(1000);
         states.selectByVisibleText("Vermont");
         Thread.sleep(1000);
         states.selectByVisibleText("Kentucky");
         Thread.sleep(1000);
+
+        // TODO selectByIndex --> selects based on the index of the option, 0 based count
+        states.selectByIndex(0);
+        Thread.sleep(1000);
+        states.selectByIndex(10);
+        Thread.sleep(1000);
+        states.selectByIndex(20);
+        Thread.sleep(1000);
+
 
 
     }
