@@ -47,6 +47,8 @@ public class JavaScriptExecutorTests {
 
         jse.executeScript("arguments[0].setAttribute('value', '" + text +"')", input);
 
+        // arguments[0].setAttribute('value', 'HELLO WORLD')
+
     }
 
 
