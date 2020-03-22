@@ -16,7 +16,7 @@ public class JavaScriptExecutorTests {
 
     @BeforeMethod
     public void beforeMethod() {
-        driver = WebDriverFactory.getDriver("firefox");
+        driver = WebDriverFactory.getDriver("chrome");
         jse = (JavascriptExecutor) driver;
     }
 
@@ -35,4 +35,19 @@ public class JavaScriptExecutorTests {
 
         Thread.sleep(2000);
     }
+
+    @Test
+    public void sendKeysWithJS(){
+
+        driver.get("http://practice.cybertekschool.com/dynamic_controls");
+
+        WebElement input = driver.findElement(By.cssSelector("input[disabled]"));
+
+        String text = "hi world";
+
+        jse.executeScript("arguments[0].setAttribute('value', '" + text +"')", input);
+
+    }
+
+
 }
