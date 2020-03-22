@@ -60,13 +60,14 @@ public class ActionsClassDemo {
     }
 
     @Test
-    public void dragAndDrop(){
+    public void dragAndDrop() throws InterruptedException {
         driver.get("https://demos.telerik.com/kendo-ui/dragdrop/index");
 
         WebElement money = driver.findElement(By.id("draggable"));
         WebElement bank = driver.findElement(By.id("droptarget"));
-
-
+        Thread.sleep(2000);
+        actions.dragAndDrop(money, bank).perform();
+        Thread.sleep(2000);
     }
 
 }
