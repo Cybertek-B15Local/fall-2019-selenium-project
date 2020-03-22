@@ -74,4 +74,14 @@ public class SelectClassTests {
         states.selectByValue("NE");
 
     }
+
+    @Test
+    public void getAllAvailableOptions(){
+        Select monthList = new Select(driver.findElement(By.id("month")));
+
+        // print the current selection
+        System.out.println(monthList.getFirstSelectedOption().getText());
+
+    }
+
 }
