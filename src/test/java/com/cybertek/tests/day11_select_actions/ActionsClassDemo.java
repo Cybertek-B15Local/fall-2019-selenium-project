@@ -23,7 +23,7 @@ public class ActionsClassDemo {
 
     @AfterMethod
     public void afterTest() {
-//        driver.quit();
+        driver.quit();
     }
 
     @Test
@@ -70,6 +70,7 @@ public class ActionsClassDemo {
 
         // scroll
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+//        actions.sendKeys(Keys.ARROW_DOWN).perform();
 
         actions.dragAndDrop(money, bank).perform();
         Thread.sleep(2000);
