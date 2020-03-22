@@ -2,6 +2,7 @@ package com.cybertek.tests.day11_select_actions;
 
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -16,13 +17,13 @@ public class ActionsClassDemo {
 
     @BeforeMethod
     public void beforeMethod() {
-        driver = WebDriverFactory.getDriver("chrome");
+        driver = WebDriverFactory.getDriver("firefox");
         actions = new Actions(driver);
     }
 
     @AfterMethod
     public void afterTest() {
-        driver.quit();
+//        driver.quit();
     }
 
     @Test
@@ -66,8 +67,33 @@ public class ActionsClassDemo {
         WebElement money = driver.findElement(By.id("draggable"));
         WebElement bank = driver.findElement(By.id("droptarget"));
         Thread.sleep(2000);
+
+        // scroll
+        actions.sendKeys(Keys.PAGE_DOWN).perform();
+
         actions.dragAndDrop(money, bank).perform();
         Thread.sleep(2000);
+    }
+
+    /*
+    TASK
+    do the drag and drop by chaining actions
+    move mouse to source/money
+    mouse down
+    move mouse to target/bank
+    mouse up
+     */
+
+    @Test
+    public void dragAndDropAgain() throws InterruptedException {
+        driver.get("https://demos.telerik.com/kendo-ui/dragdrop/index");
+
+        WebElement money = driver.findElement(By.id("draggable"));
+        WebElement bank = driver.findElement(By.id("droptarget"));
+        Thread.sleep(2000);
+        actions.moveToElement(money).clickAndHold().moveToElement(bank).release().build().perform();
+        Thread.sleep(2000);
+
     }
 
 }
