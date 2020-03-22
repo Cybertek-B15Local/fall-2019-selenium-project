@@ -131,6 +131,12 @@ public class SelectClassTests {
 
         List<String> expectedValues = Arrays.asList("Please select an option", "Option 1", "Option 2");
 
+        List<String> actualValues = new ArrayList<>();
+        for (WebElement option : list.getOptions()) {
+            actualValues.add(option.getText());
+        }
+
+        Assert.assertEquals(actualValues, expectedValues);
 
     }
 }
