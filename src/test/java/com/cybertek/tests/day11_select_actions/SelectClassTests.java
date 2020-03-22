@@ -10,6 +10,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 
 public class SelectClassTests {
@@ -28,7 +33,7 @@ public class SelectClassTests {
     }
 
     @Test
-    public void getSelectedOption(){
+    public void getSelectedOption() {
         // FIND THE ELEMENT THAT HAS SELECT TAG
         WebElement dropdown = driver.findElement(By.id("dropdown"));
 
@@ -78,7 +83,7 @@ public class SelectClassTests {
     }
 
     @Test
-    public void getAllAvailableOptions(){
+    public void getAllAvailableOptions() {
         Select monthList = new Select(driver.findElement(By.id("month")));
 
         // print the current selection
@@ -87,13 +92,35 @@ public class SelectClassTests {
         // TODO getOptions--> returns all of the availabe options from dropdown
         List<WebElement> allOptions = monthList.getOptions();
 
-        System.out.println("Number of months: "+ allOptions.size());
+        System.out.println("Number of months: " + allOptions.size());
 
         for (WebElement month : allOptions) {
             System.out.println(month.getText());
         }
 
+        // verify that months list always shows the current month as selected
+        // get the current month
+        String expected = LocalDate.now().getMonth().name();
+        String actual = monthList.getFirstSelectedOption().getText();
+        Assert.assertEquals(actual.toLowerCase(), expected.toLowerCase());
+
+        // verify that months list has following values: January....December
+        List<String> expectedMonths = Arrays.asList("January", "February", "March", "April", "May", "June", "July", "August",
+                "September", "October", "November", "December");
+
+
+        // get options gives me list webelements, so allOptions is alist of web elemetns
+        // but my expected it a list strings. i have to make sure the both list of strings
+        // i need to get lsit string from list of webeelment
+
+        List<String> actualMonths = new ArrayList<>();
+        for (WebElement option : allOptions) {
+            actualMonths.add(option.getText());
+        }
+        Assert.assertEquals(actualMonths, expectedMonths);
 
     }
 
+
+    @Test
 }
