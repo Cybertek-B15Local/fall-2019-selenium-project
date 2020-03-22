@@ -59,4 +59,14 @@ public class ActionsClassDemo {
 
     }
 
+    @Test
+    public void dragAndDrop(){
+        driver.get("https://demos.telerik.com/kendo-ui/dragdrop/index");
+
+        WebElement money = driver.findElement(By.id("draggable"));
+        WebElement bank = driver.findElement(By.id("droptarget"));
+
+
+    }
+
 }
