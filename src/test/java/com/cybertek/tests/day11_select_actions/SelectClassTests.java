@@ -138,5 +138,5 @@ public class SelectClassTests {
 
         Assert.assertEquals(actualValues, expectedValues);
 
-    }
+    } // BREAK 2.03
 }
