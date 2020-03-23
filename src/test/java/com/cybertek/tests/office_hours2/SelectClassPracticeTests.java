@@ -19,12 +19,12 @@ public class SelectClassPracticeTests {
     WebDriver driver;
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         driver = WebDriverFactory.getDriver("chrome");
     }
 
     @AfterMethod
-    public void tearDown(){
+    public void tearDown() {
         driver.quit();
     }
 
@@ -56,7 +56,7 @@ public class SelectClassPracticeTests {
     /*
      go to http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellTable
     select option Coworkers
-    verify that that Coworkers is now selected
+
     select options Contacts
     verify that contacts is selected
      */
@@ -66,9 +66,14 @@ public class SelectClassPracticeTests {
         Thread.sleep(2000);
         Select categories = new Select(driver.findElement(By.cssSelector("select[tabindex='-1']")));
 
-        // BREAK
-    }
+        //  select option Coworkers
+        categories.selectByVisibleText("Coworkers");
+//        verify that that Coworkers is now selected
+        // getFirstSelectedOption --> returns the currently selected option as Web element
+        String actual = categories.getFirstSelectedOption().getText();
+        Assert.assertEquals(actual, "Coworkers");
 
+    }
 
 
 }
