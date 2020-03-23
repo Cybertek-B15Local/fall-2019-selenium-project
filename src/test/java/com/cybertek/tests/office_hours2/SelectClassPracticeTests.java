@@ -56,7 +56,7 @@ public class SelectClassPracticeTests {
     /*
      go to http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellTable
     select option Coworkers
-
+    verify that that Coworkers is now selected
     select options Contacts
     verify that contacts is selected
      */
@@ -65,14 +65,21 @@ public class SelectClassPracticeTests {
         driver.get("http://samples.gwtproject.org/samples/Showcase/Showcase.html#!CwCellTable");
         Thread.sleep(2000);
         Select categories = new Select(driver.findElement(By.cssSelector("select[tabindex='-1']")));
-
         //  select option Coworkers
         categories.selectByVisibleText("Coworkers");
 //        verify that that Coworkers is now selected
         // getFirstSelectedOption --> returns the currently selected option as Web element
+        categories = new Select(driver.findElement(By.cssSelector("select[tabindex='-1']")));
         String actual = categories.getFirstSelectedOption().getText();
         Assert.assertEquals(actual, "Coworkers");
+        categories = new Select(driver.findElement(By.cssSelector("select[tabindex='-1']")));
+        categories.selectByVisibleText("Contacts");
 
+        //
+        categories = new Select(driver.findElement(By.cssSelector("select[tabindex='-1']")));
+        String actual1 = categories.getFirstSelectedOption().getText();
+
+        Assert.assertEquals(actual1, "Contacts");
     }
 
 
