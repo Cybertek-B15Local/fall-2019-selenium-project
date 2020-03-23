@@ -82,5 +82,15 @@ public class SelectClassPracticeTests {
         Assert.assertEquals(actual1, "Contacts");
     }
 
-
+/**
+ * go to http://practice.cybertekschool.com/dropdown
+ * verify taht days table has days sorted in ascending order
+ */
+    @Test
+    public void test3(){
+        driver.get("http://practice.cybertekschool.com/dropdown");
+        Select days = new Select(driver.findElement(By.id("day")));
+        List<WebElement> options = days.getOptions();
+        System.out.println("Number of options: " + options.size());
+    }
 }
