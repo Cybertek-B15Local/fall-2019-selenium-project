@@ -11,7 +11,9 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class SelectClassPracticeTests {
@@ -92,5 +94,27 @@ public class SelectClassPracticeTests {
         Select days = new Select(driver.findElement(By.id("day")));
         List<WebElement> options = days.getOptions();
         System.out.println("Number of options: " + options.size());
+
+        // i have  a list of web elements, i need to verify if the values (numbers) are sorted in ascending order
+        // list of web element to list of string
+        List<String> stringList = BrowserUtils.getElementsText(options);
+
+        // list of string to list of ints
+        List<Integer> ints = new ArrayList<>();
+        for (String string : stringList) {
+            ints.add(Integer.parseInt(string));
+        }
+
+        System.out.println(ints);
+
+        // verify list of ints is sorted
+
+        // create new class with values of the given list
+        List<Integer> intsCopy = new ArrayList<>(ints);
+        // sorting the copy
+        Collections.sort(intsCopy);
+        // finally compare
+        Assert.assertEquals(ints, intsCopy);
+
     }
 }
