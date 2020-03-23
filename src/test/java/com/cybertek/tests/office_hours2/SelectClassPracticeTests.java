@@ -1,5 +1,6 @@
 package com.cybertek.tests.office_hours2;
 
+import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -50,6 +51,9 @@ public class SelectClassPracticeTests {
         List<String> expectedOptions = Arrays.asList("Family", "Friends", "Coworkers", "Businesses", "Contacts");
 
         // given a list web elements, extract the text of the elements into new list of strings
+        List<String> allOptionsStr = BrowserUtils.getElementsText(allOptionsEl);
+
+        Assert.assertEquals(allOptionsStr, expectedOptions);
 
     }
 }
