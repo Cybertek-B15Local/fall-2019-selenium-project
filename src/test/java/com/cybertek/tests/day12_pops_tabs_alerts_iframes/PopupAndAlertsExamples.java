@@ -25,10 +25,14 @@ public class PopupAndAlertsExamples {
     }
 
     @Test
-    public void htmlPopup(){
+    public void htmlPopup() throws InterruptedException {
         driver.get("https://www.primefaces.org/showcase/ui/overlay/confirmDialog.xhtml");
         WebElement button = driver.findElement(By.xpath("//span[text()='Destroy the World']"));
         button.click();
 
+        Thread.sleep(1000);
+        WebElement noooo = driver.findElement(By.xpath("//span[.='No']"));
+        noooo.click();
+        Thread.sleep(1000);
     }
 }
