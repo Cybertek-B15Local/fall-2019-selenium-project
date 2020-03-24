@@ -19,7 +19,7 @@ public class PopupAndAlertsExamples {
 
     @AfterMethod
     public void afterTest() {
-//        driver.quit();
+        driver.quit();
     }
 
     @Test
