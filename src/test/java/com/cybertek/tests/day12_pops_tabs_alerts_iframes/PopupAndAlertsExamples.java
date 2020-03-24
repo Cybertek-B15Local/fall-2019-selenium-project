@@ -1,10 +1,7 @@
 package com.cybertek.tests.day12_pops_tabs_alerts_iframes;
 
 import com.cybertek.utilities.WebDriverFactory;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -38,7 +35,7 @@ public class PopupAndAlertsExamples {
     }
 
     @Test
-    public void jsAlertsAccept(){
+    public void jsAlertsAccept() {
         driver.get("http://practice.cybertekschool.com/javascript_alerts");
 
         WebElement button1 = driver.findElement(By.xpath("//button[1]"));
@@ -49,7 +46,7 @@ public class PopupAndAlertsExamples {
     }
 
     @Test
-    public void jsAlertsCancel(){
+    public void jsAlertsCancel() {
         driver.get("http://practice.cybertekschool.com/javascript_alerts");
 
         WebElement button2 = driver.findElement(By.xpath("//button[2]"));
@@ -60,15 +57,21 @@ public class PopupAndAlertsExamples {
     }
 
     @Test
-    public void jsAlertsSendkeys(){
+    public void jsAlertsSendkeys() {
         driver.get("http://practice.cybertekschool.com/javascript_alerts");
 
-        WebElement button3= driver.findElement(By.xpath("//button[3]"));
-        button3.click();
+        WebElement button3 = driver.findElement(By.xpath("//button[3]"));
+//        button3.click();
 
-        Alert alert = driver.switchTo().alert();
-        alert.sendKeys("Admiral Kunkka");
-        alert.accept();
+        Alert alert = null;
+        try {
+            alert = driver.switchTo().alert();
+            alert.sendKeys("Admiral Kunkka");
+            alert.accept();
+
+        } catch (NoAlertPresentException e) {
+            e.printStackTrace();
+        }
     }
 
 }
