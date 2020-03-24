@@ -59,4 +59,16 @@ public class PopupAndAlertsExamples {
         alert.dismiss();
     }
 
+    @Test
+    public void jsAlertsSendkeys(){
+        driver.get("http://practice.cybertekschool.com/javascript_alerts");
+
+        WebElement button3= driver.findElement(By.xpath("//button[3]"));
+        button3.click();
+
+        Alert alert = driver.switchTo().alert();
+        alert.sendKeys("Admiral Kunkka");
+        alert.accept();
+    }
+
 }
