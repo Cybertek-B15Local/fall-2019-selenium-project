@@ -20,7 +20,7 @@ public class IframeExample {
 
     @AfterMethod
     public void afterTest() {
-//        driver.quit();
+        driver.quit();
     }
 
     @Test
