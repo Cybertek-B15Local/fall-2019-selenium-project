@@ -8,6 +8,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.Set;
+
 public class TabsAndWindowsExample {
 
     WebDriver driver;
@@ -28,6 +30,19 @@ public class TabsAndWindowsExample {
         WebElement link = driver.findElement(By.linkText("Click Here"));
         link.click();
 
+        // get all the available tabs
+        Set<String> windowHandles = driver.getWindowHandles();
+
+        // print all the windows handles
+        for (String windowHandle : windowHandles) {
+            System.out.println(windowHandle);
+        }
+
+        // get the id of current window/tab
+        String currentWindow = driver.getWindowHandle();
+        System.out.println("currentWindow = " + currentWindow);
+
+        System.out.println(driver.getTitle());
         System.out.println(driver.findElement(By.tagName("h3")).getText());
     }
 }
