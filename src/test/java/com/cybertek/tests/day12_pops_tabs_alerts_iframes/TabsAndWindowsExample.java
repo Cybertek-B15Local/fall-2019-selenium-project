@@ -47,7 +47,7 @@ public class TabsAndWindowsExample {
 
         for (String windowHandle : windowHandles) {
             driver.switchTo().window(windowHandle);
-            if (driver.getTitle().equals("driver.getWindowHandles();")) {
+            if (driver.getTitle().equals("New Window")) {
                 break;
             }
         }
