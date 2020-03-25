@@ -27,16 +27,25 @@ public class IframeExample {
     public void test() throws InterruptedException {
         driver.get("http://practice.cybertekschool.com/tinymce");
 
-        Thread.sleep(3000);
-
         // we will switch to iframe.
         // TODO switch by id/name
         driver.switchTo().frame("mce_0_ifr");
 
         WebElement textBox = driver.findElement(By.id("tinymce"));
-        textBox.click();
+        textBox.clear();
         textBox.sendKeys("great.thanks");
 
+        // get out fo the frame
+        driver.switchTo().defaultContent();
+        System.out.println(driver.findElement(By.tagName("h3")));
+
+        // TODO switch by webelement
+        WebElement frame = driver.findElement(By.tagName("iframe"));
+        driver.switchTo().frame(frame);
+
+        textBox = driver.findElement(By.id("tinymce"));
+        textBox.clear();
+        textBox.sendKeys("great.thanks one time");
 
     }
 }
