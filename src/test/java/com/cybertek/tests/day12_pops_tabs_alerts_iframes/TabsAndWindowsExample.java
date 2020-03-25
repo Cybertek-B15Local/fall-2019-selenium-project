@@ -56,5 +56,15 @@ public class TabsAndWindowsExample {
         System.out.println(driver.getTitle());
         System.out.println(driver.findElement(By.tagName("h3")).getText());
 
+
+
     }
+
+    // write a utility that takes a String title,
+    // changes to tab with given title,
+    // if such title is not found, go back to original window
+
+    // write a utility that takes a String url,
+    // changes to tab with given url,
+    // if such title is not found, go back to original window
 }
