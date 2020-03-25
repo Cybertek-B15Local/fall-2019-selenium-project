@@ -37,7 +37,7 @@ public class IframeExample {
 
         // get out fo the frame
         driver.switchTo().defaultContent();
-        System.out.println(driver.findElement(By.tagName("h3")));
+        System.out.println(driver.findElement(By.tagName("h3")).getText());
 
         // TODO switch by webelement
         WebElement frame = driver.findElement(By.tagName("iframe"));
@@ -46,6 +46,17 @@ public class IframeExample {
         textBox = driver.findElement(By.id("tinymce"));
         textBox.clear();
         textBox.sendKeys("great.thanks one time");
+
+        // get out of the frame
+        driver.switchTo().parentFrame();
+        System.out.println(driver.findElement(By.tagName("h3")).getText());
+
+        // TODO switch by index
+        driver.switchTo().frame(0);
+
+        textBox = driver.findElement(By.id("tinymce"));
+        textBox.clear();
+        textBox.sendKeys("great.thanks last time");
 
     }
 }
