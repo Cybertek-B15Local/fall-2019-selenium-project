@@ -41,8 +41,20 @@ public class TabsAndWindowsExample {
         // get the id of current window/tab
         String currentWindow = driver.getWindowHandle();
         System.out.println("currentWindow = " + currentWindow);
-
+        System.out.println("BEFORE SWITCHING");
         System.out.println(driver.getTitle());
         System.out.println(driver.findElement(By.tagName("h3")).getText());
+
+        for (String windowHandle : windowHandles) {
+            driver.switchTo().window(windowHandle);
+            if (driver.getTitle().equals("driver.getWindowHandles();")) {
+                break;
+            }
+        }
+
+        System.out.println("AFTER SWITCHING");
+        System.out.println(driver.getTitle());
+        System.out.println(driver.findElement(By.tagName("h3")).getText());
+
     }
 }
