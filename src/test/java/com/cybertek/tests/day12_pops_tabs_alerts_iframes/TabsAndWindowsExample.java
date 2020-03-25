@@ -57,7 +57,6 @@ public class TabsAndWindowsExample {
         System.out.println(driver.findElement(By.tagName("h3")).getText());
 
 
-
     }
 
     // write a utility that takes a String title,
@@ -66,5 +65,5 @@ public class TabsAndWindowsExample {
 
     // write a utility that takes a String url,
     // changes to tab with given url,
-    // if such title is not found, go back to original window
+    // if such url is not found, go back to original window
 }
