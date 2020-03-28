@@ -108,4 +108,20 @@ public class ExplicitWaitExamples {
 
     }
 
+    @Test
+    public void test4WaitForInvisible(){
+        driver.manage().window().maximize();
+        driver.get("http://qa3.vytrack.com");
+        WebElement username = driver.findElement(By.id("prependedInput"));
+        username.sendKeys("salesmanager110");
+        WebElement password = driver.findElement(By.id("prependedInput2"));
+        password.sendKeys("UserUser123");
+        password.submit();
+
+
+        WebElement myCalendar = driver.findElement(By.linkText("My Calendar"));
+        myCalendar.click();
+
+    }
+
 }
