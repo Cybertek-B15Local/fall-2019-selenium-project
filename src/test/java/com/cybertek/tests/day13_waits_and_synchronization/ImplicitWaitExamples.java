@@ -40,6 +40,7 @@ public class ImplicitWaitExamples {
 
         driver.get("http://practice.cybertekschool.com/dynamic_loading/2");
         WebElement button = driver.findElement(By.tagName("button"));
+        button.click();
 
         message = driver.findElement(By.cssSelector("#finish>h4"));
 
