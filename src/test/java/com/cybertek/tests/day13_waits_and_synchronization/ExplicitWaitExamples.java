@@ -94,15 +94,18 @@ public class ExplicitWaitExamples {
         WebElement submit = driver.findElement(By.tagName("button"));
 
         Assert.assertTrue(username.isDisplayed());
-        username.sendKeys("Admiral Kunkka");
-        password.sendKeys("Admiral Kunkka");
+        username.sendKeys("tomsmith");
+        password.sendKeys("SuperSecretPassword");
 
-        // wait for element to disappear
-
+        // wait for element to disappear.
+        // wait until the overlay element disappears
+        WebElement overlay = driver.findElement(By.className("loadingoverlay"));
+        wait.until(ExpectedConditions.invisibilityOf(overlay));
 
         // waits for given element to be clickable
         wait.until(ExpectedConditions.elementToBeClickable(submit));
         submit.click();
+
     }
 
 }
