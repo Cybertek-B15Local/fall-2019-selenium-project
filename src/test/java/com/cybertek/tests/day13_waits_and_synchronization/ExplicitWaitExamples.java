@@ -1,9 +1,12 @@
 package com.cybertek.tests.day13_waits_and_synchronization;
 
 import com.cybertek.utilities.WebDriverFactory;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -44,6 +47,18 @@ public class ExplicitWaitExamples {
 
     @Test
     public void test2WaitForVisible(){
+        driver.get("http://practice.cybertekschool.com/dynamic_loading/1");
+
+        WebElement button = driver.findElement(By.tagName("button"));
+        button.click();
+
+        WebElement username = driver.findElement(By.id("username"));
+        WebElement password = driver.findElement(By.id("pwd"));
+
+        // make sure that username is visible on page
+        Assert.assertTrue(username.isDisplayed());
+        username.sendKeys("johndoe");
+
 
     }
 
