@@ -11,6 +11,8 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
+
 public class ExplicitWaitExamples {
 
     WebDriver driver;
@@ -60,7 +62,26 @@ public class ExplicitWaitExamples {
         // make sure that username is visible on page
         Assert.assertTrue(username.isDisplayed());
         username.sendKeys("johndoe");
+    }
 
+    @Test
+    public void test3WaitForVisibleFail(){
+        driver.get("http://practice.cybertekschool.com/dynamic_loading/1");
+
+        WebElement button = driver.findElement(By.tagName("button"));
+        button.click();
+
+        WebElement username = driver.findElement(By.id("username"));
+        WebElement password = driver.findElement(By.id("pwd"));
+
+        // give no,t enough time. change the wait time
+        wait.withTimeout(Duration.ofSeconds(2));
+
+        // waits for given element to be visible on page
+        wait.until(ExpectedConditions.visibilityOf(username));
+        // make sure that username is visible on page
+        Assert.assertTrue(username.isDisplayed());
+        username.sendKeys("johndoe");
     }
 
 }
