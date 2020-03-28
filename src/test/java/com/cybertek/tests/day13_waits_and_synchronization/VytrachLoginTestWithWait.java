@@ -35,6 +35,10 @@ public class VytrachLoginTestWithWait {
         password.sendKeys("UserUser123");
         password.submit();
 
+
+        WebElement pageName = driver.findElement(By.cssSelector(".oro-subtitle"));
+        Assert.assertEquals(pageName.getText(), "Dashboard");
+
         Assert.assertEquals(driver.getTitle(), "Dashboard");
     }
 
