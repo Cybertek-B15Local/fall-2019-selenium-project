@@ -17,7 +17,7 @@ public class VytrachLoginTestWithWait {
     @BeforeMethod
     public void setUp() {
         driver = WebDriverFactory.getDriver("chrome");
-//        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 
@@ -41,5 +41,16 @@ public class VytrachLoginTestWithWait {
 
         Assert.assertEquals(driver.getTitle(), "Dashboard");
     }
+
+
+    @Test
+    public void test2(){
+        driver.get("http://practice.cybertekschool.com/dynamic_loading/3");
+
+        WebElement input = driver.findElement(By.tagName("input"));
+        input.sendKeys("t shirt");
+    }
+
+
 
 }
