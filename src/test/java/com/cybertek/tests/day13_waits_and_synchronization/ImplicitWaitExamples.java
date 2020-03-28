@@ -18,7 +18,7 @@ public class ImplicitWaitExamples {
     @BeforeMethod
     public void setUp() {
         driver = WebDriverFactory.getDriver("chrome");
-        driver.manage().timeouts().implicitlyWait(77, TimeUnit.DAYS);
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
     }
 
