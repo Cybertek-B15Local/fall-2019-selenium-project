@@ -11,11 +11,13 @@ import org.testng.annotations.Test;
 public class ExplicitWaitExamples {
 
     WebDriver driver;
+    // create web object
+    WebDriverWait wait;
 
     @BeforeMethod
     public void setUp() {
         driver = WebDriverFactory.getDriver("chrome");
-
+        wait = new WebDriverWait(driver, 10);
     }
 
     @AfterMethod
@@ -32,12 +34,16 @@ public class ExplicitWaitExamples {
         driver.get("https://store.steampowered.com/");
 
         // wait for the title of the second page
-        // create web object
-        WebDriverWait wait = new WebDriverWait(driver, 10);
+
         // start waiting for title contain text
         wait.until(ExpectedConditions.titleContains("Steam"));
 
         System.out.println(driver.getTitle());
+
+    }
+
+    @Test
+    public void test2WaitForVisible(){
 
     }
 

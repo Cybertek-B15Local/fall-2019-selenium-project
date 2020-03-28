@@ -48,4 +48,5 @@ public class ImplicitWaitExamples {
         System.out.println(message.getText());
 
     }
+
 }
