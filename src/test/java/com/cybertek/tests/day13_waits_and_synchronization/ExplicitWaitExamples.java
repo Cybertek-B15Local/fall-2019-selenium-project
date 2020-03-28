@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 public class ExplicitWaitExamples {
 
@@ -118,8 +119,13 @@ public class ExplicitWaitExamples {
         password.sendKeys("UserUser123");
         password.submit();
 
+        driver.manage().timeouts().implicitlyWait(1, TimeUnit.SECONDS);
 
         WebElement myCalendar = driver.findElement(By.linkText("My Calendar"));
+
+        // wait until the element with class loader-mask is not visible
+        wait.until(ExpectedConditions.invisibilityOfElementLocated(By.cssSelector(".loader-mask")));
+
         myCalendar.click();
 
     }
