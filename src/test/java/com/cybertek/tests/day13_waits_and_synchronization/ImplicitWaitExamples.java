@@ -18,7 +18,7 @@ public class ImplicitWaitExamples {
     @BeforeMethod
     public void setUp() {
         driver = WebDriverFactory.getDriver("chrome");
-        driver.manage().timeouts().implicitlyWait(7, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(77, TimeUnit.DAYS);
 
     }
 
@@ -33,8 +33,15 @@ public class ImplicitWaitExamples {
 
         driver.get("http://practice.cybertekschool.com/dynamic_loading/4");
 
-
         WebElement message = driver.findElement(By.cssSelector("#finish>h4"));
+
+        Assert.assertTrue(message.isDisplayed());
+        System.out.println(message.getText());
+
+        driver.get("http://practice.cybertekschool.com/dynamic_loading/2");
+        WebElement button = driver.findElement(By.id("button"));
+
+        message = driver.findElement(By.cssSelector("#finish>h4"));
 
         Assert.assertTrue(message.isDisplayed());
         System.out.println(message.getText());
