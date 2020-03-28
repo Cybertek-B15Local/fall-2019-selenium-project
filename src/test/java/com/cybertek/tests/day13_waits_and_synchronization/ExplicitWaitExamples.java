@@ -64,6 +64,7 @@ public class ExplicitWaitExamples {
         username.sendKeys("johndoe");
     }
 
+    // THIS WILL THROW EXCEPTION
     @Test
     public void test3WaitForVisibleFail(){
         driver.get("http://practice.cybertekschool.com/dynamic_loading/1");
@@ -82,6 +83,20 @@ public class ExplicitWaitExamples {
         // make sure that username is visible on page
         Assert.assertTrue(username.isDisplayed());
         username.sendKeys("johndoe");
+    }
+
+    @Test
+    public void test4WaitForClickable(){
+        driver.get("http://practice.cybertekschool.com/dynamic_loading/6");
+
+        WebElement username = driver.findElement(By.id("username"));
+        WebElement password = driver.findElement(By.id("pwd"));
+        WebElement submit = driver.findElement(By.tagName("button"));
+
+        Assert.assertTrue(username.isDisplayed());
+        username.sendKeys("Admiral Kunkka");
+        password.sendKeys("Admiral Kunkka");
+        submit.click();
     }
 
 }
