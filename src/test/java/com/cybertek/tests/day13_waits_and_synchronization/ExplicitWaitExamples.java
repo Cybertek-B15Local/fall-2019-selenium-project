@@ -25,7 +25,7 @@ public class ExplicitWaitExamples {
 
     @AfterMethod
     public void tearDown() {
-        driver.quit();
+//        driver.quit();
     }
 
     @Test
@@ -55,10 +55,11 @@ public class ExplicitWaitExamples {
         WebElement username = driver.findElement(By.id("username"));
         WebElement password = driver.findElement(By.id("pwd"));
 
+        // waits for given element to be visible on page
+        wait.until(ExpectedConditions.visibilityOf(username));
         // make sure that username is visible on page
         Assert.assertTrue(username.isDisplayed());
         username.sendKeys("johndoe");
-
 
     }
 
