@@ -96,6 +96,9 @@ public class ExplicitWaitExamples {
         Assert.assertTrue(username.isDisplayed());
         username.sendKeys("Admiral Kunkka");
         password.sendKeys("Admiral Kunkka");
+
+        // waits for given element to be clickable
+        wait.until(ExpectedConditions.elementToBeClickable(submit));
         submit.click();
     }
 
