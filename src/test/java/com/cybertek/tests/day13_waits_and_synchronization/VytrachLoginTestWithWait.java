@@ -17,7 +17,7 @@ public class VytrachLoginTestWithWait {
     @BeforeMethod
     public void setUp() {
         driver = WebDriverFactory.getDriver("firefox");
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
     }
 
