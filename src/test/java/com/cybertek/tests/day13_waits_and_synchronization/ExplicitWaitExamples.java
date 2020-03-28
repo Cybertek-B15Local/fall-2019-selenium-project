@@ -97,6 +97,9 @@ public class ExplicitWaitExamples {
         username.sendKeys("Admiral Kunkka");
         password.sendKeys("Admiral Kunkka");
 
+        // wait for element to disappear
+
+
         // waits for given element to be clickable
         wait.until(ExpectedConditions.elementToBeClickable(submit));
         submit.click();
