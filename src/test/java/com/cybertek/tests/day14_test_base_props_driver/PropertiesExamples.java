@@ -1,5 +1,6 @@
 package com.cybertek.tests.day14_test_base_props_driver;
 
+import com.cybertek.utilities.ConfigurationReader;
 import org.testng.annotations.Test;
 
 import java.util.Properties;
@@ -22,6 +23,13 @@ public class PropertiesExamples {
 
         String browser = properties.getProperty("browser");
         System.out.println("browser name= " + browser);
+
+        // i need the browser/url from properties file
+
+        String pBrowser = ConfigurationReader.getProperty("browser");
+        System.out.println("pBrowser = " + pBrowser);
+
+
 
 
     }
