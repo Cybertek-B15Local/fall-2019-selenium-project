@@ -1,5 +1,6 @@
 package com.cybertek.base;
 
+import com.cybertek.utilities.Driver;
 import com.cybertek.utilities.WebDriverFactory;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterMethod;
@@ -10,7 +11,7 @@ public abstract class TestBase {
 
     @BeforeMethod
     public void setUpMethod(){
-        driver = WebDriverFactory.getDriver("chrome");
+        driver = Driver.getDriver();
     }
 
     @AfterMethod
