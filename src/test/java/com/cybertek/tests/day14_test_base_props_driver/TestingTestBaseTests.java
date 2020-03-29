@@ -13,5 +13,7 @@ public class TestingTestBaseTests extends TestBase {
         driver.get(url);
 
         Assert.assertEquals(driver.getTitle(), "Practice");
+        System.out.println(driver.getTitle());
+        System.out.println(driver.getCurrentUrl());
     }
 }
