@@ -5,9 +5,12 @@ public class Singleton {
     private Singleton() {
     }
 
-    static String string = "my string";
+    private static String string;
 
     public static String getInstance() {
+        if (string == null) {
+            string = "chrome";
+        }
         return string;
     }
 }
