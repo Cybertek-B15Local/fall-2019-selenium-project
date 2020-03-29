@@ -12,6 +12,7 @@ public abstract class TestBase {
     @BeforeMethod
     public void setUpMethod(){
         driver = Driver.getDriver();
+
     }
 
     @AfterMethod
