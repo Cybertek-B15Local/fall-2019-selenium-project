@@ -46,7 +46,7 @@ public class PropertiesExamples {
         String url = ConfigurationReader.getProperty("url");
         driver.get(url);
         driver.close();
-        String str = Singleton.getInstance();
+        String str = Singleton.getInstance().toUpperCase();
         System.out.println(str);
     }
 
