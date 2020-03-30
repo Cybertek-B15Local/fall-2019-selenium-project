@@ -8,6 +8,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -28,6 +29,7 @@ public class EtsyTests extends TestBase {
         WebElement input = driver.findElement(By.id("global-enhancements-search-query"));
         input.sendKeys("wooden spoon"+ Keys.ENTER);
 
+        // VERIFY TITLE
         String expectedTitle = "Wooden spoon | Etsy";
 
         // wait a little until title changes to right one
@@ -37,5 +39,14 @@ public class EtsyTests extends TestBase {
         wait.until(ExpectedConditions.titleIs(expectedTitle));
 
         Assert.assertEquals(driver.getTitle(), expectedTitle);
+
+        // VERIFY SHIP TO LOCATION
+
+        // wait until element is FOUND in html
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+        Select shipToList = new Select(driver.findElement(By.name("ship_to")));
+
+
+
     }
 }
