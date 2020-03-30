@@ -19,7 +19,7 @@ public class EtsyTests extends TestBase {
     /*
     search for wooden spoon on etsy
     verify title contains the searchterm
-    verify that default shipt to location is Ship to
+    verify that default shipt to location is United States
     verify Ship to countries include Australia
      */
 
@@ -46,7 +46,10 @@ public class EtsyTests extends TestBase {
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         Select shipToList = new Select(driver.findElement(By.name("ship_to")));
 
-
+        String expectedDefaultCountry = "United States";
+        // get the selected element and get its text
+        String actualDefaultCountry =shipToList.getFirstSelectedOption().getText();
+        Assert.assertEquals(actualDefaultCountry, expectedDefaultCountry);
 
     }
 }
