@@ -4,10 +4,7 @@ import com.cybertek.base.TestBase;
 import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -60,6 +57,19 @@ public class EtsyTests extends TestBase {
         // get all options is a list of strings
         List<String> options = BrowserUtils.getElementsText(shipToList.getOptions());
         Assert.assertTrue(options.contains("Australia"));
+
+        // VERIFY FREE SHIPPING IS NOT CLICKED
+        WebElement freeeShipping = driver.findElement(By.name("free_shipping"));
+        Assert.assertFalse(freeeShipping.isSelected());
+
+        // VERIFY URL CHANGES WHEN FREE SHIPPING IS CLICKED
+        // click using JS
+        WebElement freeeShippingLabel = driver.findElement(By.xpath("//label[.='FREE shipping']"));
+        freeeShippingLabel.click();
+
+        String expectedUrl = "free_shipping=true";
+        Assert.assertTrue(driver.getCurrentUrl().endsWith(expectedUrl));
+
 
     }
 }
