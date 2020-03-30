@@ -2,9 +2,11 @@ package com.cybertek.tests.office_hours3;
 
 import com.cybertek.base.TestBase;
 import com.cybertek.utilities.BrowserUtils;
+import com.cybertek.utilities.Driver;
 import com.cybertek.utilities.WebDriverFactory;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -25,16 +27,22 @@ public class EtsyTests extends TestBase {
      */
 
     @Test
-    public void verifyCountryList(){
+    public void verifyCountryList() throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+
         driver.get("https://etsy.com");
+        // for chrome users, wait until page loads
+        waitForPageToLoad(5000);
+
         WebElement input = driver.findElement(By.id("global-enhancements-search-query"));
+
+
         input.sendKeys("wooden spoon"+ Keys.ENTER);
 
         // VERIFY TITLE
         String expectedTitle = "Wooden spoon | Etsy";
 
         // wait a little until title changes to right one
-        WebDriverWait wait = new WebDriverWait(driver, 10);
 
         // using explicit wait to wait until title contains Wooden spoon | Etsy
         wait.until(ExpectedConditions.titleIs(expectedTitle));
@@ -56,6 +64,12 @@ public class EtsyTests extends TestBase {
 
         // get all options is a list of strings
         List<String> options = BrowserUtils.getElementsText(shipToList.getOptions());
+
+        for (String option : options) {
+//            option.trim().equals("Austalia")
+        }
+
+
         Assert.assertTrue(options.contains("Australia"));
 
         // VERIFY FREE SHIPPING IS NOT CLICKED
@@ -71,5 +85,19 @@ public class EtsyTests extends TestBase {
         Assert.assertTrue(driver.getCurrentUrl().endsWith(expectedUrl));
 
 
+    }
+
+    public static void waitForPageToLoad(long timeOutInSeconds) {
+        ExpectedCondition<Boolean> expectation = new ExpectedCondition<Boolean>() {
+            public Boolean apply(WebDriver driver) {
+                return ((JavascriptExecutor) driver).executeScript("return document.readyState").equals("complete");
+            }
+        };
+        try {
+            WebDriverWait wait = new WebDriverWait(Driver.getDriver(), timeOutInSeconds);
+            wait.until(expectation);
+        } catch (Throwable error) {
+            error.printStackTrace();
+        }
     }
 }

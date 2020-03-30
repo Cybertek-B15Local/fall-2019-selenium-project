@@ -24,7 +24,7 @@ public class DifferentBrowsers extends TestBase {
         } else if (driver.toString().contains("ChromeDriver")) {
             System.out.println("this is chrome");
         }
-        // get th
+        // use the instance of keyword
         System.out.println("OPTION 3");
 
         if (driver instanceof FirefoxDriver) {
