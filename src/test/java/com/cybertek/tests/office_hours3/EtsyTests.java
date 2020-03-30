@@ -7,8 +7,12 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.util.concurrent.TimeUnit;
 
 public class EtsyTests extends TestBase {
     /*
@@ -25,6 +29,13 @@ public class EtsyTests extends TestBase {
         input.sendKeys("wooden spoon"+ Keys.ENTER);
 
         String expectedTitle = "Wooden spoon | Etsy";
+
+        // wait a little until title changes to right one
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+
+        // using explicit wait to wait until title contains Wooden spoon | Etsy
+        wait.until(ExpectedConditions.titleIs(expectedTitle));
+
         Assert.assertEquals(driver.getTitle(), expectedTitle);
     }
 }
