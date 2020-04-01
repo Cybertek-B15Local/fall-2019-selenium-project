@@ -77,4 +77,13 @@ public class WebTablesTests extends TestBase {
         return xpath;
     }
 
+    // GET SINGLE CELL BASED ON INDEX
+    @Test
+    public void getSingleBasedByIndex(){
+        WebElement cell = driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[1]/td[1]"));
+        System.out.println(cell.getText());
+    }
+
+
+
 }
