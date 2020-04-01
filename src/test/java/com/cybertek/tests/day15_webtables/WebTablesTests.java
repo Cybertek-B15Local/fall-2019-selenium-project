@@ -82,8 +82,15 @@ public class WebTablesTests extends TestBase {
     public void getSingleBasedByIndex(){
         WebElement cell = driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[1]/td[1]"));
         System.out.println(cell.getText());
+
+        String xpath = getCellXpathByIndex(2, 3);
+        cell = driver.findElement(By.xpath(xpath));
+        System.out.println(cell.getText());
     }
 
-
+    public static String getCellXpathByIndex (int row,int column){
+        String xpath = "//table[@id='table1']/tbody/tr["+row+"]/td["+column+"]";
+        return xpath;
+    }
 
 }

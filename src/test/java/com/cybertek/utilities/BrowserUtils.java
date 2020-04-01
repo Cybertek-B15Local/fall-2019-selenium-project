@@ -18,5 +18,6 @@ public class BrowserUtils {
             listSt.add(element.getText());
         }
         return listSt;
+
     }
 }
