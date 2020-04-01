@@ -57,4 +57,24 @@ public class WebTablesTests extends TestBase {
         System.out.println("Number of row without header: "+ rowsWithOutHeader.size());
 
     }
+
+    // GET SINGLE ROW BY INDEX
+    @Test
+    public void getSingleRowByIndex(){
+        // get the first row (in the body)
+        WebElement row = driver.findElement(By.xpath("//table[@id='table1']/tbody/tr[1]"));
+        System.out.println(row.getText());
+
+        // get the first row (in the body) dynamic xpath
+        String xpath = getTableRowXpath(3);
+        row = driver.findElement(By.xpath(xpath));
+        System.out.println(row.getText());
+
+    }
+    // getTableRowXpath based on index
+    public static String getTableRowXpath(int index){
+        String xpath = "//table[@id='table1']/tbody/tr["+index+"]";
+        return xpath;
+    }
+
 }
