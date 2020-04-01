@@ -10,7 +10,7 @@ public abstract class TestBase {
     protected WebDriver driver;
 
     @BeforeMethod
-    public void setUpMethod(){
+    public void setUpMethod() {
         driver = Driver.getDriver();
 
     }
@@ -18,7 +18,7 @@ public abstract class TestBase {
     @AfterMethod
     public void tearDownMethod() throws InterruptedException {
         Thread.sleep(5000);
-        driver.quit();
+        Driver.closeDriver();
     }
 }
 
