@@ -36,8 +36,22 @@ public class WebTablesTests extends TestBase {
         // get all headers in a list
         List<WebElement> headers = driver.findElements(By.xpath("//table[@id='table1']//th"));
         System.out.println(headers.size());
-
+        // use BrowserUtils to get the list of headers as text and print
         System.out.println(BrowserUtils.getElementsText(headers));
+
+    }
+
+    // GET table size
+    @Test
+    public void getTableSize(){
+        // get number of cols
+        List<WebElement> headers = driver.findElements(By.xpath("//table[@id='table1']//th"));
+        System.out.println("Number columns: "+headers.size());
+
+
+        // get number of rows including header
+        // get number of rows without header
+
 
     }
 }
