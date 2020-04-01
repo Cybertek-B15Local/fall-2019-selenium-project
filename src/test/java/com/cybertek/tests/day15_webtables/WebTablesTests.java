@@ -48,10 +48,13 @@ public class WebTablesTests extends TestBase {
         List<WebElement> headers = driver.findElements(By.xpath("//table[@id='table1']//th"));
         System.out.println("Number columns: "+headers.size());
 
-
         // get number of rows including header
-        // get number of rows without header
+        List<WebElement> rowsWithHeader = driver.findElements(By.xpath("//table[@id='table1']//tr"));
+        System.out.println("Number of row with header: "+ rowsWithHeader.size());
 
+        // get number of rows without header
+        List<WebElement> rowsWithOutHeader = driver.findElements(By.xpath("//table[@id='table1']/tbody/tr"));
+        System.out.println("Number of row without header: "+ rowsWithOutHeader.size());
 
     }
 }
