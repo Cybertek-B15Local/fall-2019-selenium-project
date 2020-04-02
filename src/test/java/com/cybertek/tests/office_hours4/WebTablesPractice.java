@@ -49,6 +49,5 @@ public class WebTablesPractice extends TestBase {
             Assert.assertTrue(actual.equals("Male") || actual.equals("Female"));
         }
 
-
     }
 }
