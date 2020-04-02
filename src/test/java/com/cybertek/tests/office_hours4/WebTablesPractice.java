@@ -42,6 +42,12 @@ public class WebTablesPractice extends TestBase {
         List<WebElement> allGenders = driver.findElements(By.xpath("//table[@style]/tbody/tr/td[5]"));
         System.out.println(allGenders.size());
 
+        // go through the list
+        // verify that values is either Male or Female
+        for (WebElement gender : allGenders) {
+            String actual = gender.getText();
+            Assert.assertTrue(actual.equals("Male") || actual.equals("Female"));
+        }
 
 
     }
