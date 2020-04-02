@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.util.concurrent.TimeUnit;
+
 public class WebTablesPractice extends TestBase {
 
     @BeforeMethod
@@ -19,9 +21,10 @@ public class WebTablesPractice extends TestBase {
 
     @Test
     public void testHeaderCount(){
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.switchTo().frame("preview_iframe");
 
-        WebElement table = driver.findElement(By.xpath("//table[@class='table table-bordered table-hover table-condensed']"));
+        WebElement table = driver.findElement(By.xpath("//table"));
         System.out.println(table.getText());
     }
 
