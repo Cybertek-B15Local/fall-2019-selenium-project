@@ -18,6 +18,9 @@ public class IframesExample extends TestBase {
         driver.switchTo().frame(innerFrame);
         System.out.println(driver.findElement(By.tagName("h1")).getText());
 
+        // change back to default content
+        driver.switchTo().defaultContent();
+        System.out.println(driver.findElement(By.cssSelector(".cm-m-xml.cm-meta")).getText());
 
     }
 }
