@@ -15,6 +15,9 @@ public class DashboardPage {
     @FindBy(className = "oro-subtitle")
     public WebElement pageHader;
 
-    @FindBy(linkText = "Fleet")
+    @FindBy(xpath = "//span[contains(text(), 'Fleet')][@class='title title-level-1']")
     public WebElement fleet;
+
+    @FindBy(xpath = "//span[contains(text(), 'Vehicles')][@class='title title-level-2']")
+    public WebElement vehicles;
 }

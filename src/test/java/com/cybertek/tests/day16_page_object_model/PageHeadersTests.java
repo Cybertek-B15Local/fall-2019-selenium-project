@@ -41,6 +41,8 @@ public class PageHeadersTests extends VytrackTestBase {
         // change page
         wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.fleet));
         dashboardPage.fleet.click();
+        wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.vehicles));
+        dashboardPage.vehicles.click();
     }
 
 
