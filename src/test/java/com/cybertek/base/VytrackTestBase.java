@@ -2,6 +2,7 @@ package com.cybertek.base;
 
 import com.cybertek.pages.DashboardPage;
 import com.cybertek.pages.LoginPage;
+import com.cybertek.pages.VehiclesPage;
 import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
 import org.openqa.selenium.WebDriver;
@@ -14,6 +15,7 @@ public abstract class VytrackTestBase {
     protected WebDriverWait wait;
     protected LoginPage loginPage;
     protected DashboardPage dashboardPage;
+    protected VehiclesPage vehiclesPage;
 
 
     @BeforeMethod
@@ -23,6 +25,7 @@ public abstract class VytrackTestBase {
         driver.get(ConfigurationReader.getProperty("vytrack_url"));
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();
+        vehiclesPage = new VehiclesPage();
 
     }
 

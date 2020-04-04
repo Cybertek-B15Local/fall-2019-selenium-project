@@ -35,14 +35,21 @@ public class PageHeadersTests extends VytrackTestBase {
 
     @Test
     public void fleetVehiclesTest() throws InterruptedException {
+
+        // use login to login
         String username = ConfigurationReader.getProperty("driver_username");
         String password = ConfigurationReader.getProperty("driver_password");
         loginPage.login(username, password);
-        // change page
+        // use dashbaord change page
         wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.fleet));
         dashboardPage.fleet.click();
         wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.vehicles));
         dashboardPage.vehicles.click();
+
+        // use the fllet / vehicles page to get text
+        wait.until(ExpectedConditions.textToBePresentInElement(vehiclesPage.pageHader, "Cars"));
+        String actual = vehiclesPage.pageHader.getText();
+        assertEquals(actual, "Cars");
     }
 
 
