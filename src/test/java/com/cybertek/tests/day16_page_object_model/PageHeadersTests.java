@@ -21,7 +21,6 @@ public class PageHeadersTests extends VytrackTestBase {
         String password = ConfigurationReader.getProperty("driver_password");
         loginPage.login(username, password);
 
-        DashboardPage dashboardPage = new DashboardPage();
         wait.until(ExpectedConditions.textToBePresentInElement(dashboardPage.pageHader, "Quick Launchpad"));
         String actual = dashboardPage.pageHader.getText();
         assertEquals(actual, "Quick Launchpad");
@@ -35,11 +34,14 @@ public class PageHeadersTests extends VytrackTestBase {
     // verify  header is "Cars"
 
     @Test
-    public void fleetVehiclesTest(){
+    public void fleetVehiclesTest() throws InterruptedException {
         String username = ConfigurationReader.getProperty("driver_username");
         String password = ConfigurationReader.getProperty("driver_password");
         loginPage.login(username, password);
-    } //BREAK 3.13
+        // change page
+        wait.until(ExpectedConditions.elementToBeClickable(dashboardPage.fleet));
+        dashboardPage.fleet.click();
+    }
 
 
 }

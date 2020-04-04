@@ -1,5 +1,6 @@
 package com.cybertek.base;
 
+import com.cybertek.pages.DashboardPage;
 import com.cybertek.pages.LoginPage;
 import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
@@ -12,6 +13,8 @@ public abstract class VytrackTestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
     protected LoginPage loginPage;
+    protected DashboardPage dashboardPage;
+
 
     @BeforeMethod
     public void setUpMethod() {
@@ -19,6 +22,7 @@ public abstract class VytrackTestBase {
         wait = new WebDriverWait(driver, 10);
         driver.get(ConfigurationReader.getProperty("vytrack_url"));
         loginPage = new LoginPage();
+        dashboardPage = new DashboardPage();
 
     }
 
