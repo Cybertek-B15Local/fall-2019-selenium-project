@@ -4,9 +4,11 @@ import com.cybertek.base.TestBase;
 import com.cybertek.base.VytrackTestBase;
 import com.cybertek.pages.DashboardPage;
 import com.cybertek.utilities.ConfigurationReader;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
 
 import static org.testng.Assert.assertEquals;
+
 
 public class PageHeadersTests extends VytrackTestBase {
     // go to vyrack
@@ -20,14 +22,17 @@ public class PageHeadersTests extends VytrackTestBase {
         loginPage.login(username, password);
 
         DashboardPage dashboardPage = new DashboardPage();
+        wait.until(ExpectedConditions.textToBePresentInElement(dashboardPage.pageHader, "Quick Launchpad"));
         String actual = dashboardPage.pageHader.getText();
         assertEquals(actual, "Quick Launchpad");
+
     }
 
 
 //    go to vyrack
     // go to Fleet vehicles
     // login as driver
-    // verify  header is "All Cars"
+    // verify  header is "Cars"
+
 
 }
