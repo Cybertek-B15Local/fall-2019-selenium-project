@@ -3,8 +3,6 @@ package com.cybertek.tests.day16_page_object_model;
 import com.cybertek.base.TestBase;
 import com.cybertek.pages.LoginPage;
 import com.cybertek.utilities.ConfigurationReader;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
