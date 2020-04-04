@@ -13,7 +13,7 @@ public class DashboardPage {
     }
 
     @FindBy(className = "oro-subtitle")
-    public WebElement pageHader;
+    public WebElement pageHeader;
 
     @FindBy(xpath = "//span[contains(text(), 'Fleet')][@class='title title-level-1']")
     public WebElement fleet;

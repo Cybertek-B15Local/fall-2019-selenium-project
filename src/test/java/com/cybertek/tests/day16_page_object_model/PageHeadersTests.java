@@ -1,8 +1,6 @@
 package com.cybertek.tests.day16_page_object_model;
 
-import com.cybertek.base.TestBase;
 import com.cybertek.base.VytrackTestBase;
-import com.cybertek.pages.DashboardPage;
 import com.cybertek.utilities.ConfigurationReader;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.Test;
@@ -21,8 +19,8 @@ public class PageHeadersTests extends VytrackTestBase {
         String password = ConfigurationReader.getProperty("driver_password");
         loginPage.login(username, password);
 
-        wait.until(ExpectedConditions.textToBePresentInElement(dashboardPage.pageHader, "Quick Launchpad"));
-        String actual = dashboardPage.pageHader.getText();
+        wait.until(ExpectedConditions.textToBePresentInElement(dashboardPage.pageHeader, "Quick Launchpad"));
+        String actual = dashboardPage.pageHeader.getText();
         assertEquals(actual, "Quick Launchpad");
 
     }
