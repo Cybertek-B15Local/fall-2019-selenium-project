@@ -18,6 +18,6 @@ public class DashboardPage {
     @FindBy(xpath = "//span[contains(text(), 'Fleet')][@class='title title-level-1']")
     public WebElement fleet;
 
-    @FindBy(xpath = "//span[contains(text(), 'Vehicles')][@class='title title-level-2']")
+    @FindBy(xpath = "//span[.='Vehicles'][@class='title title-level-2']")
     public WebElement vehicles;
 }
