@@ -23,4 +23,6 @@ public class LoginPage {
     @FindBy(name = "_submit")
     public WebElement logIn;
 
+    @FindBy(css = ".alert-error>div")
+    public WebElement errorMessage;
 }
