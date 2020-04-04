@@ -9,14 +9,18 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import static org.testng.Assert.*;
+
 public class PositiveLoginTests extends TestBase {
 
     LoginPage loginPage;
+    WebDriverWait wait;
 
     @BeforeMethod
     public void setUpTests() {
         driver.get(ConfigurationReader.getProperty("vytrack_url"));
         loginPage = new LoginPage();
+        wait = new WebDriverWait(driver, 5);
 
     }
 
@@ -25,12 +29,20 @@ public class PositiveLoginTests extends TestBase {
         String username = ConfigurationReader.getProperty("driver_username");
         String password = ConfigurationReader.getProperty("driver_password");
         loginPage.login(username, password);
-
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         wait.until(ExpectedConditions.titleIs("Dashboard"));
-
         String actualTitle = driver.getTitle();
-        Assert.assertEquals(actualTitle, "Dashboard");
+        assertEquals(actualTitle, "Dashboard");
+
+    }
+
+    @Test
+    public void loginAsSalesManger(){
+        String username = ConfigurationReader.getProperty("sales_manager_username");
+        String password = ConfigurationReader.getProperty("sales_manager_password");
+        loginPage.login(username, password);
+        wait.until(ExpectedConditions.titleIs("Dashboard"));
+        String actualTitle = driver.getTitle();
+        assertEquals(actualTitle, "Dashboard");
 
     }
 
