@@ -11,7 +11,7 @@ import static org.testng.Assert.assertEquals;
 public class PageHeadersTests extends VytrackTestBase {
     // go to vyrack
     // login as driver
-    // verify  header is "Dashboard"
+    // verify  header is "Quick Launchpad"
 
     @Test
     public void dashboardPageTest(){
@@ -21,7 +21,7 @@ public class PageHeadersTests extends VytrackTestBase {
 
         DashboardPage dashboardPage = new DashboardPage();
         String actual = dashboardPage.pageHader.getText();
-        assertEquals(actual, "Dashboard");
+        assertEquals(actual, "Quick Launchpad");
     }
 
 
