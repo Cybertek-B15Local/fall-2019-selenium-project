@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeMethod;
 public abstract class VytrackTestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
-    LoginPage loginPage;
+    protected LoginPage loginPage;
 
     @BeforeMethod
     public void setUpMethod() {
