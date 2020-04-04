@@ -34,5 +34,12 @@ public class PageHeadersTests extends VytrackTestBase {
     // login as driver
     // verify  header is "Cars"
 
+    @Test
+    public void fleetVehiclesTest(){
+        String username = ConfigurationReader.getProperty("driver_username");
+        String password = ConfigurationReader.getProperty("driver_password");
+        loginPage.login(username, password);
+    } //BREAK 3.13
+
 
 }
