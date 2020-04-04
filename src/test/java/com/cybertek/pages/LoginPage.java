@@ -29,8 +29,10 @@ public class LoginPage {
     @FindBy(css = ".alert-error>div")
     public WebElement errorMessage;
 
-    public WebElement getUsername(){
-        return Driver.getDriver().findElement(By.id("asdfasdf"));
-    }
+   public void login(String username, String password){
+       this.username.sendKeys(username);
+       this.password.sendKeys(password);
+       logIn.click();
+   }
 
 }
