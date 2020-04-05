@@ -31,7 +31,7 @@ public abstract class VytrackTestBase {
 
     @AfterMethod
     public void tearDownMethod() throws InterruptedException {
-        Thread.sleep(5000);
+        Thread.sleep(3000);
         Driver.closeDriver();
     }
 

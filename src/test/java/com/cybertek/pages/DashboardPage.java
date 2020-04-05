@@ -26,9 +26,6 @@ public class DashboardPage {
     public WebElement accountHolderName;
 
     public void changeMenu(String menu1, String menu2) {
-        // menu1 ->fleet
-        // menu2 ->Vehicles
-        // locate the menu1
         String menu1X = "//span[contains(text(), '"+menu1+"')][@class='title title-level-1']";
         WebElement menu1El = Driver.getDriver().findElement(By.xpath(menu1X));
 
