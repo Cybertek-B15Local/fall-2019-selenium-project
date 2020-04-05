@@ -1,10 +1,12 @@
 package com.cybertek.pages;
 
 import com.cybertek.utilities.Driver;
-import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DashboardPage {
     public DashboardPage() {
@@ -22,4 +24,29 @@ public class DashboardPage {
 
     @FindBy(xpath = "(//a[@class='dropdown-toggle'])[1]")
     public WebElement accountHolderName;
+
+    public void changeMenu(String menu1, String menu2) {
+        // menu1 ->fleet
+        // menu2 ->Vehicles
+        // locate the menu1
+        String menu1X = "//span[contains(text(), '"+menu1+"')][@class='title title-level-1']";
+        WebElement menu1El = Driver.getDriver().findElement(By.xpath(menu1X));
+
+        String menu2X = "//span[.='"+menu2+"'][@class='title title-level-2']";
+        WebElement menu2El = Driver.getDriver().findElement(By.xpath(menu2X));
+
+        WebDriverWait wait =new WebDriverWait(Driver.getDriver(), 5);
+
+        wait.until(ExpectedConditions.elementToBeClickable(menu1El));
+
+        menu1El.click();
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        wait.until(ExpectedConditions.elementToBeClickable(menu2El));
+        menu2El.click();
+
+    }
 }
