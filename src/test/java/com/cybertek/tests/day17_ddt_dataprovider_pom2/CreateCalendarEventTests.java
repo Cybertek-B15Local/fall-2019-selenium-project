@@ -1,9 +1,10 @@
 package com.cybertek.tests.day17_ddt_dataprovider_pom2;
 
-import com.cybertek.base.TestBase;
 import com.cybertek.base.VytrackTestBase;
 import com.cybertek.utilities.ConfigurationReader;
 import org.testng.annotations.Test;
+
+import static org.testng.Assert.assertFalse;
 
 public class CreateCalendarEventTests extends VytrackTestBase {
 
@@ -12,5 +13,7 @@ public class CreateCalendarEventTests extends VytrackTestBase {
         loginPage.login(ConfigurationReader.getProperty("driver_username"),
                 ConfigurationReader.getProperty("driver_password"));
         driver.get("https://qa3.vytrack.com/calendar/event/create");
+        assertFalse(createCalendarEventsPage.allDayEventCheckbox.isSelected());
+
     }
 }
