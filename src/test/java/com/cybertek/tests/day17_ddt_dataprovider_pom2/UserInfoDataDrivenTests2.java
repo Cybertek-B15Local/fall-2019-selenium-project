@@ -24,7 +24,7 @@ public class UserInfoDataDrivenTests2 extends VytrackTestBase {
     public Object[][] getUsers() {
         return new Object[][]
                 {
-                        {"user1", "UserUser123", "John Doedsfgsdf"},
+                        {"user1", "UserUser123", "John Doe"},
                         {"user2", "UserUser123", "John Doe"},
                         {"user3", "UserUser123", "John Doe"},
                         {"user4", "UserUser123", "Kyleigh Reichert"},
