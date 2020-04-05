@@ -45,8 +45,8 @@ public class PageHeadersTests extends VytrackTestBase {
         dashboardPage.vehicles.click();
 
         // use the fllet / vehicles page to get text
-        wait.until(ExpectedConditions.textToBePresentInElement(vehiclesPage.pageHader, "Cars"));
-        String actual = vehiclesPage.pageHader.getText();
+        wait.until(ExpectedConditions.textToBePresentInElement(vehiclesPage.pageHeader, "Cars"));
+        String actual = vehiclesPage.pageHeader.getText();
         assertEquals(actual, "Cars");
     }
 
