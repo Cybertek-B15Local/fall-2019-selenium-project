@@ -8,9 +8,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public abstract class VytrackBasePage {
+public abstract class VytrackPageBase {
 
-    public VytrackBasePage() {
+    public VytrackPageBase() {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
