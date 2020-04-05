@@ -4,7 +4,6 @@ import com.cybertek.base.VytrackTestBase;
 import com.cybertek.pages.LoginPage;
 import org.apache.commons.lang3.exception.ExceptionContext;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
@@ -25,7 +24,7 @@ public class UserInfoDataDrivenTests2 extends VytrackTestBase {
     public Object[][] getUsers() {
         return new Object[][]
                 {
-                        {"user1", "UserUser123", "John Doe"},
+                        {"user1", "UserUser123", "John Doedsfgsdf"},
                         {"user2", "UserUser123", "John Doe"},
                         {"user3", "UserUser123", "John Doe"},
                         {"user4", "UserUser123", "Kyleigh Reichert"},
@@ -34,7 +33,7 @@ public class UserInfoDataDrivenTests2 extends VytrackTestBase {
                         {"user7", "UserUser123", "Dominique Deckow"},
                         {"user8", "UserUser123", "Valentine Bode"},
                         {"user9", "UserUser123", "Deborah Wolf"},
-                        {"user10", "UserUser123	", "Toney Hegmann"},
+                        {"user10", "UserUser123", "Toney Hegmann"},
                 };
 
     }
