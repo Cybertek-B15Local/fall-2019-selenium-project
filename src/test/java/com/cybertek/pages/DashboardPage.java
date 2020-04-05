@@ -5,7 +5,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class DashboardPage {
     public DashboardPage() {
@@ -20,4 +19,7 @@ public class DashboardPage {
 
     @FindBy(xpath = "//span[.='Vehicles'][@class='title title-level-2']")
     public WebElement vehicles;
+
+    @FindBy(xpath = "(//a[@class='dropdown-toggle'])[1]")
+    public WebElement accountHolderName;
 }

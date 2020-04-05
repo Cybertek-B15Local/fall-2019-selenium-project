@@ -13,7 +13,6 @@ public class UserInfoDataDrivenTests {
         System.out.println("verify info");
     }
 
-
     @DataProvider(name = "users")
     public Object[][] getUsers() {
         return new Object[][]
