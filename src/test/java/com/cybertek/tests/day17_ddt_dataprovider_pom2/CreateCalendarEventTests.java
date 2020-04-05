@@ -16,4 +16,12 @@ public class CreateCalendarEventTests extends VytrackTestBase {
         assertFalse(createCalendarEventsPage.allDayEventCheckbox.isSelected());
 
     }
+
+    @Test
+    public void repeatCheckBoxTest(){
+        loginPage.login(ConfigurationReader.getProperty("driver_username"),
+                ConfigurationReader.getProperty("driver_password"));
+        driver.get("https://qa3.vytrack.com/calendar/event/create");
+        assertFalse(createCalendarEventsPage.repeatCheckbox.isSelected());
+    }
 }
