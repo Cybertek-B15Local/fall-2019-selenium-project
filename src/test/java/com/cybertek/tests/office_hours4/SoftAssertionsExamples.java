@@ -7,7 +7,7 @@ import org.testng.asserts.SoftAssert;
 public class SoftAssertionsExamples {
 
     @Test
-    public void test(){
+    public void test() {
 
         Assert.assertEquals(11, 1, "first assertion failed");
 
@@ -16,7 +16,7 @@ public class SoftAssertionsExamples {
     }
 
     @Test
-    public void test2(){
+    public void test2() {
 
         SoftAssert softAssert = new SoftAssert();
 
@@ -25,6 +25,29 @@ public class SoftAssertionsExamples {
         softAssert.assertEquals(22, 2, "third assertion failed");
 
         softAssert.assertAll();
+    }
+
+    @Test
+    public void test3() {
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertTrue(true, "first assertion");
+        System.out.println("first assertion done");
+
+        Assert.assertTrue(true, "second assertion");
+        System.out.println("second assertion done");
+
+        Assert.assertTrue(true, "third assertion");
+        System.out.println("third assertion done");
+
+        softAssert.assertTrue(true, "fourth assertion");
+        System.out.println("fourth assertion done");
+
+        softAssert.assertAll();
+
+        Assert.assertTrue(true, "fifth assertion");
+        System.out.println("fifth assertion done");
+
     }
 
 
