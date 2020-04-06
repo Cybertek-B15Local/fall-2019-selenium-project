@@ -24,5 +24,10 @@ public class CookiesExample extends TestBase {
         for (Cookie cookie : cookies) {
             System.out.println(cookie.toString());
         }
+
+        // delete all cookies
+        driver.manage().deleteAllCookies();
+        driver.navigate().refresh();
+        System.out.println(driver.getCurrentUrl());
     }
 }
