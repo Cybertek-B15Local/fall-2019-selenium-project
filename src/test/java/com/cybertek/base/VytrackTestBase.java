@@ -37,9 +37,9 @@ public abstract class VytrackTestBase {
 
     @AfterMethod
     public void tearDownMethod() throws InterruptedException {
-        softAssert.assertAll();
 //        Thread.sleep(3000);
         Driver.closeDriver();
+        softAssert.assertAll();
     }
 
 }
