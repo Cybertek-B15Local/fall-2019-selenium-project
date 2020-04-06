@@ -43,6 +43,7 @@ public class SoftAssertionsExamples {
         softAssert.assertTrue(true, "fourth assertion");
         System.out.println("fourth assertion done");
 
+        // report all of the soft asserts, if any of the soft asserts ever failed, throws assertion error
         softAssert.assertAll();
 
         Assert.assertTrue(true, "fifth assertion");
