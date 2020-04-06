@@ -10,10 +10,12 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.asserts.SoftAssert;
 
 public abstract class VytrackTestBase {
     protected WebDriver driver;
     protected WebDriverWait wait;
+    protected SoftAssert softAssert;
     protected LoginPage loginPage;
     protected DashboardPage dashboardPage;
     protected VehiclesPage vehiclesPage;
@@ -24,6 +26,7 @@ public abstract class VytrackTestBase {
     public void setUpMethod() {
         driver = Driver.getDriver();
         wait = new WebDriverWait(driver, 10);
+        softAssert = new SoftAssert();
         driver.get(ConfigurationReader.getProperty("vytrack_url"));
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();
@@ -34,7 +37,8 @@ public abstract class VytrackTestBase {
 
     @AfterMethod
     public void tearDownMethod() throws InterruptedException {
-        Thread.sleep(3000);
+        softAssert.assertAll();
+//        Thread.sleep(3000);
         Driver.closeDriver();
     }
 
