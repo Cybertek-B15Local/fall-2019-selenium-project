@@ -47,7 +47,7 @@
         <dependency>
             <groupId>com.aventstack</groupId>
             <artifactId>extentreports</artifactId>
-            <version>4.1.3</version>
+            <version>4.0.4</version>
         </dependency>
 
     </dependencies>
