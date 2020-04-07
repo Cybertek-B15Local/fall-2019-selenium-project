@@ -4,7 +4,9 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.aventstack.extentreports.reporter.configuration.ExtentHtmlReporterConfiguration;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class ExtentReportExample {
 
@@ -35,6 +37,29 @@ public class ExtentReportExample {
         report.setSystemInfo("Environment", "QA");
         report.setSystemInfo("Browser", "Chrome");
 
-
     }
+
+    @Test
+    public void test(){
+        // we have to create a test for every test case
+        test = report.createTest("VYT-123 Title verification test");
+        test.info("Opening browser");
+        // driver = new Chromedriver
+        test.info("going to website");
+        // driver.get(gogole.com)
+        test.info("verifying title");
+        // assertEquals(google, google)
+        test.pass("VYT-123 Title verification test");
+    }
+
+    @AfterMethod
+    public void tearDown(){
+        // the report will be created when we call this line.
+        // if we dont call flush method it will not be generated.
+        // we do this at the end of everything.
+        report.flush();
+    }
+
+
+
 }
