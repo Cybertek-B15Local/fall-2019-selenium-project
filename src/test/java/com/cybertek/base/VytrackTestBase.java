@@ -1,5 +1,8 @@
 package com.cybertek.base;
 
+import com.aventstack.extentreports.ExtentReports;
+import com.aventstack.extentreports.ExtentTest;
+import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
 import com.cybertek.pages.CreateCalendarEventsPage;
 import com.cybertek.pages.DashboardPage;
 import com.cybertek.pages.LoginPage;
@@ -9,7 +12,9 @@ import com.cybertek.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
+import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
 
 public abstract class VytrackTestBase {
@@ -21,6 +26,27 @@ public abstract class VytrackTestBase {
     protected VehiclesPage vehiclesPage;
     protected CreateCalendarEventsPage createCalendarEventsPage;
 
+    protected ExtentReports report;
+    private ExtentHtmlReporter htmlReporter;
+    protected ExtentTest test;
+
+    @BeforeSuite
+    public void setUpSuite(){
+        report = new ExtentReports();
+        String path = System.getProperty("user.dir")+"/test-output/report.html";
+        htmlReporter = new ExtentHtmlReporter(path);
+        htmlReporter.config().setReportName("Vytrack Automated Tests");
+
+        report.attachReporter(htmlReporter);
+        report.setSystemInfo("Environment", "QA");
+        report.setSystemInfo("Browser", ConfigurationReader.getProperty("browser"));
+
+    }
+
+    @AfterSuite
+    public void tearDownSuite(){
+        report.flush();
+    }
 
     @BeforeMethod
     public void setUpMethod() {
