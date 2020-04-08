@@ -15,13 +15,19 @@ public class PageHeadersTests extends VytrackTestBase {
 
     @Test
     public void dashboardPageTest(){
+
+        test = report.createTest("Dashboard page title test");
+
         String username = ConfigurationReader.getProperty("driver_username");
         String password = ConfigurationReader.getProperty("driver_password");
+        test.info("Logging in to application");
         loginPage.login(username, password);
 
         wait.until(ExpectedConditions.textToBePresentInElement(dashboardPage.pageHeader, "Quick Launchpad"));
         String actual = dashboardPage.pageHeader.getText();
+        test.info("Verifying page header text");
         assertEquals(actual, "Quick Launchpad");
+        test.pass("PASS: Dashboard page title test");
 
     }
 
