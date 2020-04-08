@@ -29,8 +29,12 @@ public class ExtentReportExample {
         String path = System.getProperty("user.dir")+"/test-output/report.html";
         // initialize the html reporter with the given path
         htmlReporter = new ExtentHtmlReporter(path);
+
         // set name for the report
         htmlReporter.config().setReportName("Vytrack Automated Tests");
+
+        // attach the html reporter to the report object
+        report.attachReporter(htmlReporter);
 
         // set environment information
         report.setSystemInfo("Environment", "QA");
