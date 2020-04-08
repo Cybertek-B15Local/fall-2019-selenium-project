@@ -25,7 +25,7 @@ public class ExtentReportExample {
 
         // i need to point to the location where report will be create
         // System.getProperty("user.dir") --> gets my current folder
-        // + "test-output/report.html" --> create folder test-output and in it create file report.html
+        // + "/test-output/report.html" --> create folder test-output and in it create file report.html
         String path = System.getProperty("user.dir")+"/test-output/report.html";
         // initialize the html reporter with the given path
         htmlReporter = new ExtentHtmlReporter(path);
@@ -53,6 +53,7 @@ public class ExtentReportExample {
         test.info("verifying title");
         // assertEquals(google, google)
         test.pass("VYT-123 Title verification test");
+
     }
 
     @AfterMethod
