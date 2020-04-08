@@ -7,15 +7,19 @@ import com.cybertek.pages.CreateCalendarEventsPage;
 import com.cybertek.pages.DashboardPage;
 import com.cybertek.pages.LoginPage;
 import com.cybertek.pages.VehiclesPage;
+import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.asserts.SoftAssert;
+
+import java.io.IOException;
 
 public abstract class VytrackTestBase {
     protected WebDriver driver;
@@ -62,7 +66,20 @@ public abstract class VytrackTestBase {
     }
 
     @AfterMethod
-    public void tearDownMethod() throws InterruptedException {
+    public void tearDownMethod(ITestResult iTestResult) throws InterruptedException, IOException {
+        // ITestResult gives information about current test: name, status
+        // check if the test failed
+        if (iTestResult.getStatus() == ITestResult.FAILURE) {
+            // tell extent report that the test failed
+            test.fail(iTestResult.getName());
+
+            // take screen shot of the screen and save location
+            String screenshot = BrowserUtils.getScreenshot(iTestResult.getName());
+            // show path to screenshot
+            test.addScreenCaptureFromPath(screenshot);
+        }
+
+
 //        Thread.sleep(3000);
         Driver.closeDriver();
         softAssert.assertAll();

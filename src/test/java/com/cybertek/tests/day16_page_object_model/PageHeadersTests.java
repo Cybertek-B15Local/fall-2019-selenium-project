@@ -60,7 +60,7 @@ public class PageHeadersTests extends VytrackTestBase {
         wait.until(ExpectedConditions.textToBePresentInElement(vehiclesPage.pageHeader, "Cars"));
         test.info("Verifying page header");
         String actual = vehiclesPage.pageHeader.getText();
-        assertEquals(actual, "Cars");
+        assertEquals(actual, "Carros");
         test.pass("PASS: Vehicles page title test");
 
     }
