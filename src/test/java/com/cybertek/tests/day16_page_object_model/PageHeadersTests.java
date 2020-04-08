@@ -65,5 +65,33 @@ public class PageHeadersTests extends VytrackTestBase {
 
     }
 
+//    go to vyrack
+    // go to Customer Contacts
+    // login as driver
+    // verify  header is "Cars"
 
+    @Test
+    public void customersContacts() throws InterruptedException {
+        test = report.createTest("Contacts page title test");
+
+        // use login to login
+        String username = ConfigurationReader.getProperty("driver_username");
+        String password = ConfigurationReader.getProperty("driver_password");
+        test.info("Logging in to application");
+        test.info("Username: " + username);
+        test.info("Password: " + password);
+        loginPage.login(username, password);
+        // use dashbaord change page
+
+        test.info("Going to Customers -> Contacts");
+        dashboardPage.changeMenu("Customers", "Contacts");
+
+        // use the fllet / vehicles page to get text
+        wait.until(ExpectedConditions.textToBePresentInElement(vehiclesPage.pageHeader, "Contacts"));
+        test.info("Verifying page header");
+        String actual = vehiclesPage.pageHeader.getText();
+        assertEquals(actual, "Contacts");
+        test.pass("PASS: Contacts page title test");
+
+    }
 }
