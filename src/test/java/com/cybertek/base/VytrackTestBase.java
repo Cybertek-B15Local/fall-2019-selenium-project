@@ -67,7 +67,7 @@ public abstract class VytrackTestBase {
 
     @AfterMethod
     public void tearDownMethod(ITestResult iTestResult) throws InterruptedException, IOException {
-        // ITestResult gives information about current test: name, status
+        // ITestResult class from testng gives information about current test: name, status
         // check if the test failed
         if (iTestResult.getStatus() == ITestResult.FAILURE) {
             // tell extent report that the test failed
