@@ -13,10 +13,7 @@ import com.cybertek.utilities.Driver;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.*;
 import org.testng.asserts.SoftAssert;
 
 import java.io.IOException;
@@ -35,9 +32,9 @@ public abstract class VytrackTestBase {
     protected ExtentTest test;
 
     @BeforeSuite
-    public void setUpSuite(){
+    public void setUpSuite() {
         report = new ExtentReports();
-        String path = System.getProperty("user.dir")+"/test-output/report.html";
+        String path = System.getProperty("user.dir") + "/test-output/report.html";
         htmlReporter = new ExtentHtmlReporter(path);
         htmlReporter.config().setReportName("Vytrack Automated Tests");
 
@@ -48,16 +45,24 @@ public abstract class VytrackTestBase {
     }
 
     @AfterSuite
-    public void tearDownSuite(){
+    public void tearDownSuite() {
         report.flush();
     }
 
-    @BeforeMethod
-    public void setUpMethod() {
+    @Parameters("url")
+    @BeforeMethod()
+    public void setUpMethod(@Optional String url) {
+        System.out.println("url = " + url);
         driver = Driver.getDriver();
         wait = new WebDriverWait(driver, 10);
         softAssert = new SoftAssert();
-        driver.get(ConfigurationReader.getProperty("vytrack_url"));
+
+        if (url == null) {
+            driver.get(ConfigurationReader.getProperty("vytrack_url"));
+        } else {
+            driver.get(ConfigurationReader.getProperty(url));
+        }
+
         loginPage = new LoginPage();
         dashboardPage = new DashboardPage();
         vehiclesPage = new VehiclesPage();
