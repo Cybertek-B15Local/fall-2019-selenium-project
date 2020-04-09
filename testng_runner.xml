@@ -2,7 +2,11 @@
 <suite name="Vytrack automation tests">
     <test name="Vytrack automation tests">
         <classes>
-            <class name="com.cybertek.tests.day16_page_object_model.PageHeadersTests"></class>
+            <class name="com.cybertek.tests.day16_page_object_model.PositiveLoginTests">
+                <methods>
+                    <exclude name="loginAsDrivers"></exclude>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
