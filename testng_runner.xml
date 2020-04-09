@@ -1,13 +1,8 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
 <suite name="Vytrack automation tests">
     <test name="Vytrack automation tests">
-        <classes>
-            <class name="com.cybertek.tests.day16_page_object_model.PositiveLoginTests">
-                <methods>
-                    <include name="loginAsSalesManger"></include>
-                    <include name="loginAsDrivers"></include>
-                </methods>
-            </class>
-        </classes>
+        <packages>
+            <package name="com.cybertek.tests.day16_page_object_model"></package>
+        </packages>
     </test>
 </suite>
