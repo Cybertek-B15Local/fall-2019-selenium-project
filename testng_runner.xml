@@ -4,7 +4,8 @@
         <classes>
             <class name="com.cybertek.tests.day16_page_object_model.PositiveLoginTests">
                 <methods>
-                    <exclude name="loginAsDrivers"></exclude>
+                    <include name="loginAsSalesManger"></include>
+                    <include name="loginAsDrivers"></include>
                 </methods>
             </class>
         </classes>
