@@ -60,7 +60,7 @@ public abstract class VytrackTestBase {
         if (url == null) {
             driver.get(ConfigurationReader.getProperty("vytrack_url"));
         } else {
-            driver.get(ConfigurationReader.getProperty(url));
+            driver.get(url);
         }
 
         loginPage = new LoginPage();

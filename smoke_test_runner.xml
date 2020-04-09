@@ -2,7 +2,6 @@
 <suite name="Vytrack automation suite">
     <test name="Vytrack automation QA 1">
         <parameter name="url" value="https://qa1.vytrack.com/"></parameter>
-        <parameter name="browser" value="https://qa1.vytrack.com/"></parameter>
         <classes>
             <class name="com.cybertek.tests.day16_page_object_model.PageHeadersTests"></class>
         </classes>
