@@ -1,8 +1,7 @@
 package com.cybertek.tests.day19_excel_io;
 
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.ss.usermodel.*;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -44,8 +43,9 @@ public class ReadExcelExample {
 
         // returns the last row num based on 0 count
         int lastRownIndex = workSheet.getLastRowNum();
-        System.out.println("rowCount = " + lastRownIndex);
+        System.out.println("last row index = " + lastRownIndex);
 
+        // gives us the number of rows
         int rowCount = workSheet.getPhysicalNumberOfRows();
         System.out.println("rowCount = " + rowCount);
 
@@ -55,6 +55,29 @@ public class ReadExcelExample {
 
         int colCount =workSheet.getRow(0).getLastCellNum();
         System.out.println("colCount = " + colCount);
+    }
+
+
+    @AfterMethod
+    public void tearDown() throws IOException {
+        workbook.close();
+        fileInputStream.close();
+    }
+
+
+    @Test
+    public void readSingleCell(){
+        // to read data from cell:
+        // workSheet.getRow(7)--> get the row using 0 based index
+        // represents a row in worksheet
+        Row row = workSheet.getRow(11);
+        // row.getCell(2); --> get specific cell from that row, 0 based count
+        // Cell --> represents a cell from a row
+        Cell cell = row.getCell(2);
+        // get data from the cell
+        String value = cell.toString();
+
+        System.out.println("value = " + value);
     }
 
 }
