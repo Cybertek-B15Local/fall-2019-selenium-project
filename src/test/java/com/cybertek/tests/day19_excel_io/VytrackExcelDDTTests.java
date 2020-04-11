@@ -17,10 +17,15 @@ public class VytrackExcelDDTTests extends VytrackTestBase {
     // this test will get test data from a data provider getUserData
     @Test(dataProvider = "getUserData")
     public void userDetailsTest(String username, String password, String firstname, String lastname) {
+        test = report.createTest("User details test for "+username);
+        test.info("login to vytrack");
         loginPage.login(username, password);
         wait.until(ExpectedConditions.titleIs("Dashboard"));
+        test.info("Get expected value");
         String actualName = dashboardPage.accountHolderName.getText();
+        test.info("Verify username");
         assertEquals(actualName, firstname + " " + lastname);
+        test.pass("pass user details test for "+username);
     }
 
     @DataProvider(name = "getUserData")
@@ -50,6 +55,6 @@ public class VytrackExcelDDTTests extends VytrackTestBase {
             }
         }
 
-        return data;
+        return data; // BREAK 2.05
     }
 }
