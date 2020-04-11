@@ -4,9 +4,11 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class ReadExcelExample {
     // path to the location of the excel file.
@@ -22,11 +24,22 @@ public class ReadExcelExample {
     private Sheet workSheet;
 
     @BeforeMethod
-    public void setUp() throws FileNotFoundException {
-        // initizalie the input stream by giving the file location
+    public void setUp() throws IOException {
+        // initialize the input stream by giving the file location
         fileInputStream = new FileInputStream(filePath);
 
-//        workbook = WorkbookFactory.create(fileInputStream);
+        // create the workbook the input stream
+        // WorkbookFactory.create --> this is used to create workbook from inputstream
+        workbook = WorkbookFactory.create(fileInputStream);
+
+        // workbook.getSheetAt --> get the sheet from excel based on 0 based count
+        workSheet = workbook.getSheetAt(5);
+
+    }
+
+    @Test
+    public void rowAndColumnCount(){
+        System.out.println(workSheet.getSheetName());
     }
 
 }
