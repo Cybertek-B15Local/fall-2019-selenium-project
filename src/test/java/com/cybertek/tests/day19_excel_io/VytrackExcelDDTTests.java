@@ -16,12 +16,7 @@ public class VytrackExcelDDTTests extends VytrackTestBase {
 
     // this test will get test data from a data provider getUserData
     @Test(dataProvider = "getUserData")
-    public void userDetailsTest() {
-        String username = "";
-        String password = "";
-        String firstname = "";
-        String lastname = "";
-
+    public void userDetailsTest(String username, String password, String firstname, String lastname) {
         loginPage.login(username, password);
         wait.until(ExpectedConditions.titleIs("Dashboard"));
         String actualName = dashboardPage.accountHolderName.getText();
