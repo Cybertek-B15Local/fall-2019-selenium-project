@@ -94,6 +94,30 @@ public class ReadExcelExample {
         }
     }
 
+    @Test
+    public void readWholeSheet(){
+        // i use nested for loop to get all excel data. outer loops gets the rows, inner loop get cells from specific row
+        int rowCount = workSheet.getPhysicalNumberOfRows();
+        int colCount = workSheet.getRow(0).getLastCellNum();
+        System.out.println("rowCount = " + rowCount);
+        System.out.println("colCount = " + colCount);
+
+        // iterate through the table
+        for (int i = 0; i < rowCount; i++) {
+            // get row with current index
+            Row currentRow = workSheet.getRow(i);
+            // iterate through the row
+            for (int j = 0; j < colCount; j++) {
+                // get current cell
+                Cell cell = currentRow.getCell(j);
+                // get cell value
+                String value = cell.toString();
+                System.out.print("row "+i+ ", col: "+ j+": " + value+"\t\t\t");
+            }
+            System.out.println();
+        }
+    }
+
 }
 
 
