@@ -2,6 +2,7 @@
 <suite name="Vytrack automation suite">
     <test name="Vytrack automation QA 1">
         <parameter name="url" value="https://qa1.vytrack.com/"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="com.cybertek.tests.day16_page_object_model.PageHeadersTests"></class>
         </classes>
@@ -9,6 +10,7 @@
 
     <test name="Vytrack automation QA 3">
         <parameter name="url" value="https://qa3.vytrack.com/"></parameter>
+        <parameter name="browser" value="chrome"></parameter>
         <classes>
             <class name="com.cybertek.tests.day16_page_object_model.PageHeadersTests"></class>
         </classes>

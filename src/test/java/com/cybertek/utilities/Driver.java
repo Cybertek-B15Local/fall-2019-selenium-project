@@ -27,7 +27,7 @@ public class Driver {
             switch (browser){
                 case "chrome":
                     WebDriverManager.chromedriver().setup();
-                    driver = new ChromeDriver();
+                    driver = new ChromeDriver(new ChromeOptions().addArguments("disable-extensions"));
                     break;
                 case "chrome-headless":
                     WebDriverManager.chromedriver().setup();
