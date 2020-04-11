@@ -38,7 +38,7 @@ public class ReadExcelExample {
     }
 
     @Test
-    public void rowAndColumnCount(){
+    public void rowAndColumnCount() {
         System.out.println(workSheet.getSheetName());
 
         // returns the last row num based on 0 count
@@ -53,7 +53,7 @@ public class ReadExcelExample {
         // workSheet.getRow(0) --> we will get the  first row and
         // getLastCellNum(); --> get number cells in that row
 
-        int colCount =workSheet.getRow(0).getLastCellNum();
+        int colCount = workSheet.getRow(0).getLastCellNum();
         System.out.println("colCount = " + colCount);
     }
 
@@ -66,7 +66,7 @@ public class ReadExcelExample {
 
 
     @Test
-    public void readSingleCell(){
+    public void readSingleCell() {
         // to read data from cell:
         // workSheet.getRow(7)--> get the row using 0 based index
         // represents a row in worksheet
@@ -78,6 +78,20 @@ public class ReadExcelExample {
         String value = cell.toString();
 
         System.out.println("value = " + value);
+    }
+
+    @Test
+    public void printWholeRow(){
+        // get the row
+        Row row = workSheet.getRow(0);
+        int colCount = row.getLastCellNum();
+        System.out.println("colCount = " + colCount);
+
+        for (int i = 0; i < colCount; i++) {
+            Cell cell = row.getCell(i);
+            System.out.println("cell "+i+": = " + cell.toString());
+
+        }
     }
 
 }
