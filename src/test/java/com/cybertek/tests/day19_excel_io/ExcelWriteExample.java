@@ -65,6 +65,13 @@ public class ExcelWriteExample {
             System.out.println("firstname = " + firstname);
             System.out.println("lastname = " + lastname);
             System.out.println("result = " + result);
+            // did some test, now want to write result back to excel
+            // setCellValue --> enter the given text to cell
+            currentRow.getCell(4).setCellValue("PASS");
+            // get the updated value
+            result = currentRow.getCell(4).toString();
+            System.out.println("new result = " + result);
+
         }
     }
 
