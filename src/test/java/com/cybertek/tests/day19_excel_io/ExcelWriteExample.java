@@ -1,5 +1,6 @@
 package com.cybertek.tests.day19_excel_io;
 
+import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
@@ -45,6 +46,26 @@ public class ExcelWriteExample {
     public void tearDown() throws IOException {
         workbook.close();
         fileInputStream.close();
+    }
+
+
+    @Test
+    public void readAndWrite(){
+        // iterate get all the rows
+        for (int i = 1; i < workSheet.getPhysicalNumberOfRows(); i++) {
+            Row currentRow = workSheet.getRow(i);
+            String username = currentRow.getCell(0).toString();
+            String password = currentRow.getCell(1).toString();
+            String firstname = currentRow.getCell(2).toString();
+            String lastname = currentRow.getCell(3).toString();
+            String result = currentRow.getCell(4).toString();
+            System.out.println("ROW " + i);
+            System.out.println("username = " + username);
+            System.out.println("password = " + password);
+            System.out.println("firstname = " + firstname);
+            System.out.println("lastname = " + lastname);
+            System.out.println("result = " + result);
+        }
     }
 
 }

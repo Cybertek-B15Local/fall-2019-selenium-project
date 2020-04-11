@@ -54,7 +54,8 @@ public class VytrackExcelDDTTests extends VytrackTestBase {
                 data[i - 1][j] = cell.toString();
             }
         }
-
+        workbook.close();
+        file.close();
         return data; // BREAK 2.05
     }
 }
