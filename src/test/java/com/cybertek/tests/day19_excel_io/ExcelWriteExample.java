@@ -9,6 +9,8 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class ExcelWriteExample {
@@ -27,7 +29,7 @@ public class ExcelWriteExample {
 
     @BeforeMethod
     public void setUp() throws IOException {
-        // initialize the input stream by giving the file location
+        // initialize the input stream by giving the file location. this is for reading the file.
         fileInputStream = new FileInputStream(filePath);
 
         // create the workbook the input stream
@@ -50,7 +52,7 @@ public class ExcelWriteExample {
 
 
     @Test
-    public void readAndWrite(){
+    public void readAndWrite() throws IOException {
         // iterate get all the rows
         for (int i = 1; i < workSheet.getPhysicalNumberOfRows(); i++) {
             Row currentRow = workSheet.getRow(i);
@@ -73,6 +75,13 @@ public class ExcelWriteExample {
             System.out.println("new result = " + result);
 
         }
+        // FileOutputStream  --> writes to files
+        FileOutputStream fileOutputStream = new FileOutputStream("src/test/resources/Vytrack testusers2.xlsx");
+        // write the workbook into file
+        workbook.write(fileOutputStream);
+
+        // close the output stream
+        fileOutputStream.close();
     }
 
 }
