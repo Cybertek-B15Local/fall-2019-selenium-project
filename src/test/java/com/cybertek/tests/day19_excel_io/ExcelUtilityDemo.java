@@ -10,7 +10,6 @@ import java.util.Map;
 public class ExcelUtilityDemo {
     private String filePath = "src/test/resources/Vytrack testusers.xlsx";
     private String sheetName = "QA3-short";
-
     @Test
     public void test() {
 
