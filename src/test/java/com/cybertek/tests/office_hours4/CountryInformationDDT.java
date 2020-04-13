@@ -8,6 +8,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
@@ -62,11 +63,24 @@ public class CountryInformationDDT {
 
             } else {
                 // skip
+                currentRow.getCell(3).setCellValue("SKIP");
                 continue;
             }
 
         }
 
+    }
+
+    @AfterMethod
+    public void tearDown() throws IOException {
+        Driver.closeDriver();
+        fileOutputStream = new FileOutputStream("src/test/resources/Countries.xlsx");
+        workbook.write(fileOutputStream);
+
+
+        fileOutputStream.close();
+        fileInputStream.close();
+        workbook.close();
     }
 }
 /*
