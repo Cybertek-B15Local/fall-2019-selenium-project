@@ -20,6 +20,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class CountryInformationDDT {
 
@@ -43,7 +44,7 @@ public class CountryInformationDDT {
     public void test() {
         int count = workSheet.getPhysicalNumberOfRows();
         System.out.println("count = " + count);
-
+        boolean match =true;
         for (int i = 1; i < count; i++) {
             Row currentRow = workSheet.getRow(i);
             String execute = currentRow.getCell(0).toString();
@@ -59,6 +60,10 @@ public class CountryInformationDDT {
                     currentRow.getCell(3).setCellValue("PASS");
                 } else {
                     currentRow.getCell(3).setCellValue("FAIL");
+                    // create
+                    currentRow.createCell(4);
+                    currentRow.getCell(4).setCellValue(actual);
+                    match=false;
                 }
 
             } else {
@@ -69,6 +74,7 @@ public class CountryInformationDDT {
 
         }
 
+        assertTrue(match);
     }
 
     @AfterMethod
