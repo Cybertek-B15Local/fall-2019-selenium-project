@@ -5,6 +5,8 @@ import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -25,7 +27,7 @@ public class CountryInformationDDT {
 
     @BeforeMethod
     public void setUp() throws IOException {
-//        driver = Driver.getDriver();
+        driver = Driver.getDriver();
 
         fileInputStream = new FileInputStream("src/test/resources/Countries.xlsx");
         workbook = WorkbookFactory.create(fileInputStream);
@@ -45,6 +47,9 @@ public class CountryInformationDDT {
                 // execute the test
                 String country = currentRow.getCell(1).toString();
                 String capital = currentRow.getCell(2).toString();
+                driver.get("https://wikipedia.org");
+                driver.findElement(By.id("searchInput")).sendKeys(country+ Keys.ENTER);
+               String actual =  driver.findElement(By.xpath("//th[starts-with(text(), 'Capital')]/following-sibling::td/a ")).getText();
             } else {
                 // skip
                 continue;
@@ -53,3 +58,12 @@ public class CountryInformationDDT {
 
     }
 }
+/*
+//th[starts-with(text(), 'Capital')] --> gibe me a th element that starts with text Capital
+//th[starts-with(text(), 'Capital')]/../td   -> find the th element that starts with text Capital
+                                                find its parent
+                                                find its other child named td
+
+//th[starts-with(text(), 'Capital')]/following-sibling::td/a     -> find the th element that starts with text Capital
+                                                                find its next sibling td
+ */
