@@ -10,11 +10,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import org.testng.asserts.SoftAssert;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+import static org.testng.Assert.assertEquals;
 
 public class CountryInformationDDT {
 
@@ -28,7 +32,7 @@ public class CountryInformationDDT {
     @BeforeMethod
     public void setUp() throws IOException {
         driver = Driver.getDriver();
-
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         fileInputStream = new FileInputStream("src/test/resources/Countries.xlsx");
         workbook = WorkbookFactory.create(fileInputStream);
         workSheet = workbook.getSheet("Countries");
@@ -48,12 +52,19 @@ public class CountryInformationDDT {
                 String country = currentRow.getCell(1).toString();
                 String capital = currentRow.getCell(2).toString();
                 driver.get("https://wikipedia.org");
-                driver.findElement(By.id("searchInput")).sendKeys(country+ Keys.ENTER);
-               String actual =  driver.findElement(By.xpath("//th[starts-with(text(), 'Capital')]/following-sibling::td/a ")).getText();
+                driver.findElement(By.id("searchInput")).sendKeys(country + Keys.ENTER);
+                String actual = driver.findElement(By.xpath("//th[starts-with(text(), 'Capital')]/following-sibling::td//a")).getText();
+                if (actual.equals(capital)) {
+                    currentRow.getCell(3).setCellValue("PASS");
+                } else {
+                    currentRow.getCell(3).setCellValue("FAIL");
+                }
+
             } else {
                 // skip
                 continue;
             }
+
         }
 
     }
