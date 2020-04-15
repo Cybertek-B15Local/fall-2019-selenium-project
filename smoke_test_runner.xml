@@ -1,18 +1,20 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
-<suite name="Vytrack automation suite">
-    <test name="Vytrack automation QA 1">
-        <parameter name="url" value="https://qa1.vytrack.com/"></parameter>
-        <parameter name="browser" value="chrome"></parameter>
+<suite name="Vytrack automation suite" parallel="tests">
+    <test name="Vytrack QA3 smoke test with chrome">
+        <parameter name="env" value="qa3"/>
+        <parameter name="browser" value="chrome"/>
         <classes>
-            <class name="com.cybertek.tests.day16_page_object_model.PageHeadersTests"></class>
+            <class name="com.vytrack.tests.PositiveLoginTests"/>
+            <class name="com.vytrack.tests.NegativeLoginTests"/>
         </classes>
     </test>
 
-    <test name="Vytrack automation QA 3">
-        <parameter name="url" value="https://qa3.vytrack.com/"></parameter>
-        <parameter name="browser" value="chrome"></parameter>
+    <test name="Vytrack QA3 smoke test with firefox">
+        <parameter name="env" value="qa3"/>
+        <parameter name="browser" value="firefox"/>
         <classes>
-            <class name="com.cybertek.tests.day16_page_object_model.PageHeadersTests"></class>
+            <class name="com.vytrack.tests.PositiveLoginTests"/>
+            <class name="com.vytrack.tests.NegativeLoginTests"/>
         </classes>
     </test>
 
