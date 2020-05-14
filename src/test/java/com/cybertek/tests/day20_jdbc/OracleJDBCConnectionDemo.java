@@ -15,7 +15,7 @@ public class OracleJDBCConnectionDemo {
      *    type of the database  --> oracle
      *    ip address of the database  --> 54.226.100.111
      *    post number of the data base --> 1521
-     *    SID (service name) of the database --> xe
+     *    SID (service name)  or name of the database  --> xe
      *    these 4 pieces of information will be used to create
      *    the connection URL
      *
@@ -52,7 +52,49 @@ public class OracleJDBCConnectionDemo {
         // metadata about the result
         ResultSetMetaData rmetaData = resultSet.getMetaData();
         System.out.println(rmetaData.getColumnCount());
+        // get the name of the column, 1 based count
+        System.out.println(rmetaData.getColumnName(1));
+        // get data type of the column
+        System.out.println(rmetaData.getColumnTypeName(1));
+
+        // print names of all columns
+        int numberOfColumns = rmetaData.getColumnCount();
+        for (int i = 1; i <= numberOfColumns; i++) {
+            System.out.println(rmetaData.getColumnName(i));
+        }
+        // absolute --> jumps to given row
+        resultSet.absolute(1);
+        // getObject --> returns the value of the cell under given column
+        System.out.println(resultSet.getObject("first_name"));
+
+        // get the name of the last person
+        resultSet.last();
+        System.out.println(resultSet.getObject("first_name"));
+
+        // getrow returns the current row number
+        System.out.println("number of rows = " + resultSet.getRow());
+
+        // go back to first row
+        resultSet.beforeFirst();
+
+        // iterate through the results
+        // while loop will iterate through the rows of the result table
+        while (resultSet.next()) {
+            // for loop is for iterating the cells in the row
+            for (int i = 1; i <= numberOfColumns; i++) {
+                System.out.print(resultSet.getString(i)+"\t");
+            }
+            System.out.println();
+        }
+
+        // Make another call to db and get other result
+        resultSet = statement.executeQuery("select distinct salary  from employees e1   where 2 = (select count(distinct salary) from employees e2 where  e1.salary <= e2.salary)");
+
+        resultSet.next();
+        System.out.println(resultSet.getString("salary"));
     }
+
+
 }
 
 
