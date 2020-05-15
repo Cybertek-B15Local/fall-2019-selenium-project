@@ -3,10 +3,7 @@ package com.cybertek.base;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
-import com.cybertek.pages.CreateCalendarEventsPage;
-import com.cybertek.pages.DashboardPage;
-import com.cybertek.pages.LoginPage;
-import com.cybertek.pages.VehiclesPage;
+import com.cybertek.pages.*;
 import com.cybertek.utilities.BrowserUtils;
 import com.cybertek.utilities.ConfigurationReader;
 import com.cybertek.utilities.Driver;
@@ -26,6 +23,7 @@ public abstract class VytrackTestBase {
     protected DashboardPage dashboardPage;
     protected VehiclesPage vehiclesPage;
     protected CreateCalendarEventsPage createCalendarEventsPage;
+    protected CreateContactsPage createContactsPage;
 
     protected ExtentReports report;
     private ExtentHtmlReporter htmlReporter;
@@ -67,7 +65,7 @@ public abstract class VytrackTestBase {
         dashboardPage = new DashboardPage();
         vehiclesPage = new VehiclesPage();
         createCalendarEventsPage = new CreateCalendarEventsPage();
-
+        createContactsPage = new CreateContactsPage();
     }
 
     @AfterMethod
