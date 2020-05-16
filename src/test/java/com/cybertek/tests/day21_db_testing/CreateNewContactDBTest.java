@@ -28,6 +28,8 @@ public class CreateNewContactDBTest extends VytrackTestBase {
 
     @Test
     public void createContactTests() {
+
+        test = report.createTest("Create contact db validatoin");
         loginPage.login(ConfigurationReader.getProperty("sales_manager_username"),
                 ConfigurationReader.getProperty("sales_manager_password"));
         driver.get("https://qa3.vytrack.com/contact/create");
@@ -71,6 +73,8 @@ public class CreateNewContactDBTest extends VytrackTestBase {
         assertEquals(actualFirstName, eFirstName, "First name did not match");
         assertEquals(actualLastName, eLastName, "Last name did not match");
         assertEquals(actualEmail, eEmail, "Email did not match");
+
+        test.pass("Create contact db validation passed");
     }
 
 }
