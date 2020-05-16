@@ -11,16 +11,23 @@ import org.testng.annotations.Test;
 
 import java.util.Map;
 
+import static org.testng.Assert.assertEquals;
+
 public class CreateNewContactDBTest extends VytrackTestBase {
 
     @BeforeMethod
-    public void setUp(){
+    public void setUp() {
         // create db connection
-
+        String URL = "jdbc:mysql://" + ConfigurationReader.getProperty("qa3_db_host") +
+                ":" + ConfigurationReader.getProperty("qa3_db_port") +
+                "/" + ConfigurationReader.getProperty("qa3_db_name");
+        String username = ConfigurationReader.getProperty("qa3_db_username");
+        String password = ConfigurationReader.getProperty("qa3_db_password");
+        DBUtils.createConnection(URL, username, password);
     }
 
     @Test
-    public void createContactTests(){
+    public void createContactTests() {
         loginPage.login(ConfigurationReader.getProperty("sales_manager_username"),
                 ConfigurationReader.getProperty("sales_manager_password"));
         driver.get("https://qa3.vytrack.com/contact/create");
@@ -29,7 +36,7 @@ public class CreateNewContactDBTest extends VytrackTestBase {
         String eFirstName = faker.name().firstName();
         String eLastName = faker.name().lastName();
         String company = faker.company().url().substring(4);
-        String eEmail = eFirstName.toLowerCase()+eLastName.toLowerCase()+"@"+company;
+        String eEmail = eFirstName.toLowerCase() + eLastName.toLowerCase() + "@" + company;
         System.out.println("eEmail = " + eEmail);
         BrowserUtils.wait(3);
         // create new user with the given test data
@@ -49,12 +56,21 @@ public class CreateNewContactDBTest extends VytrackTestBase {
                 "from orocrm_contact\n" +
                 "join orocrm_contact_email\n" +
                 "on orocrm_contact.id =orocrm_contact_email.owner_id\n" +
-                "where orocrm_contact_email.email = 'picard@starfleet.com';\n";
-
+                "where orocrm_contact_email.email = '" + eEmail + "';\n";
+        System.out.println("sql = " + sql);
 
         Map<String, Object> dbData = DBUtils.getRowMap(sql);
         System.out.println(dbData);
 
+        // extract the actual from the db onfp
+        String actualFirstName = (String) dbData.get("first_name");
+        String actualLastName = (String) dbData.get("last_name");
+        String actualEmail = (String) dbData.get("email");
+
+        // verify
+        assertEquals(actualFirstName, eFirstName, "First name did not match");
+        assertEquals(actualLastName, eLastName, "Last name did not match");
+        assertEquals(actualEmail, eEmail, "Email did not match");
     }
 
 }
