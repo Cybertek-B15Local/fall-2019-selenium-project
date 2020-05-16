@@ -19,7 +19,10 @@ public class DbUtilityDemo {
                 "join orocrm_contact_email\n" +
                 "on orocrm_contact.id =orocrm_contact_email.owner_id\n" ;
 
-        System.out.println(DBUtils.getRowMap(sql));
+        System.out.println(DBUtils.getQueryResultList(sql));
+        System.out.println(DBUtils.getColumnNames(sql));
+        System.out.println(DBUtils.getColumnData(sql, "first_name"));
+
 
     }
 }
