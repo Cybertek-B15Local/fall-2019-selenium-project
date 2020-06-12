@@ -94,6 +94,22 @@ public class OracleJDBCConnectionDemo {
         System.out.println(resultSet.getString("salary"));
     }
 
+        @Test
+        public void updateAndDelete() throws SQLException {
+            String url = "jdbc:oracle:thin:@18.232.121.19:1521:xe";
+            String username = "hr";
+            String password = "hr";
+
+            Connection connection = DriverManager.getConnection(url, username, password);
+
+            Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+                    ResultSet.CONCUR_READ_ONLY);
+
+            ResultSet resultSet = statement.executeQuery("delete * from employees where first_name = 'Steven'");
+             resultSet = statement.executeQuery("UPDATE  * from employees where first_name = 'Steven'");
+
+        }
+
 
 }
 
